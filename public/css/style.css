@@ -5494,6 +5494,7 @@ ul,li{
 	position:relative;
 	margin-bottom:25px;
 	line-height:2em;
+	min-height: 80px;
 }
 
 /***

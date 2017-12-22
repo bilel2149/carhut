@@ -66,7 +66,7 @@
 															@foreach( $posts as $post )
 																<tr>
 																	<td>{{ $post->id }}</td>
-											            <td></td>
+											            <td><img src="{{asset('/uploads/')}}/{{ $post->post_thumbnail }}" alt="{{ $post->post_title }}" style="width:100px;"/></td>
 											            <td>{{ $post->post_slug }}</td>
 											            <td>{{ $post->post_title }}</td>
 											            <td>
@@ -77,7 +77,7 @@
 																		@endif
 																	</td>
 											            <td>{{ $post->post_type }}</td>
-																	<td>Categorie</td>
+																	<td>{{ $post->category_ID }}</td>
 																	<td>{{ date( 'j/m/Y', strtotime( $post->created_at ) ) }}</td>
 																	<td>{{ date( 'j/m/Y', strtotime( $post->updated_at ) ) }}</td>
 											            <td>

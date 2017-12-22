@@ -44,7 +44,8 @@
                         <div class="default-blog-post">
                             <div class="inner-box">
                                 <figure class="image-box">
-                                    <a href="blog-single.html"><img src="{{asset('images/resource/blog-image-11.jpg')}}" alt="">
+                                    <a href="blog-single.html">
+                                      <img src="{{asset('/uploads/')}}/{{ $post->post_thumbnail }}" alt="{{ $post->post_title }}"/>
                                     </a>
                                     <div class="date"><span class="day">{{ date('d', strtotime( $post->created_at )) }}</span>{{ date('M-Y', strtotime( $post->created_at )) }}</div>
                                 </figure>

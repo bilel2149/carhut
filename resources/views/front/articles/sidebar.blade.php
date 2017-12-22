@@ -46,7 +46,8 @@
             @foreach( $recentPosts as $post )
               <article class="post">
                   <figure class="post-thumb">
-                      <a href="#"><img src="{{asset('images/resource/post-thumb-4.jpg')}}" alt="">
+                      <a href="#">
+                        <img src="{{asset('/uploads/')}}/{{ $post->post_thumbnail }}" alt="{{ $post->post_title }}"/>
                       </a>
                   </figure>
                   <h4><a href="/article/{{ $post->post_slug }}">
