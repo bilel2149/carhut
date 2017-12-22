@@ -46,7 +46,7 @@
 									<div class="panel-body">
 
 										<hr>
-										<form action="{{ route('posts.store') }}" method="POST">
+										<form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
 											{{ csrf_field() }}
 											<input type="hidden" name="post_type" value="post" />
 											<div class="row">
@@ -77,10 +77,18 @@
 														<label for="category_ID" class="control-label">
 															Category <span class="symbol required"></span>
 														</label>
+														<?php $categories = Helper::get_categories(); ?>
 														<select name="category_ID" id="category_ID" class="form-control">
-															<option value="">Choisir une categorie</option>
-															<option value="1">Categorie 1</option>
-															<option value="2">Categorie 2</option>
+															<option value="">Choisir une catégorie</option>
+															<?php
+																if( $categories ) {
+																	foreach( $categories as $category ) {
+																		?>
+																			<option value="{{ $category->id }}">{{ $category->category_name }}</option>
+																		<?php
+																	}
+																}
+															?>
 														</select>
 														@if ($errors->has('category_ID'))
 		                            <span class="help-block">
@@ -89,20 +97,26 @@
 		                        @endif
 
 													</div>
-
+													<div class="form-group">
+														<label for="post_thumbnail" class="control-label">
+															Image
+														</label>
+														<input type="file" class="form-control" id="post_thumbnail" name="post_thumbnail">
+													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group{{ $errors->has('post_content') ? ' has-error' : '' }}">
 														<label for="post_content" class="control-label">
 															Contenu <span class="symbol required"></span>
 														</label>
-														<textarea name="post_content" placeholder="Contenu" class="form-control" id="post_content" cols="80" rows="8">{{ old('post_content') }}</textarea>
+														<textarea name="post_content" placeholder="Contenu" class="form-control" id="post_content" cols="80" rows="10">{{ old('post_content') }}</textarea>
 														@if ($errors->has('post_content'))
 																<span class="help-block">
 																		<strong>{{ $errors->first('post_content') }}</strong>
 																</span>
 														@endif
 													</div>
+
 												</div>
 											</div>
 											<div class="row">
