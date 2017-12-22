@@ -18,6 +18,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('article/{slug}', 'ArticlesController@getSingle')->name('single');
 Route::get('articles', 'ArticlesController@getIndex')->name('articles.index');
+Route::get('search/{s?}', 'SearchesController@getIndex')->where('s', '[\w\d]+');
 
 //Back End
 Route::get('/admin', 'AdminController@index');

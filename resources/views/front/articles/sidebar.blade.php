@@ -5,9 +5,9 @@
         <!-- Search Form -->
         <div class="sidebar-widget search-box">
 
-            <form method="post" action="blog.html">
+            <form method="GET" action="/search/">
                 <div class="form-group">
-                    <input type="search" name="search-field" value="" placeholder="Search Here">
+                    <input type="search" name="s" value="{{ Request::query('s') }}" placeholder="Chercher un article">
                     <button type="submit"><span class="icon fa fa-search"></span>
                     </button>
                 </div>
