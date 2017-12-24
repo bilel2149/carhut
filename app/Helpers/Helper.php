@@ -6,6 +6,7 @@ use App\User;
 use App\Post;
 use App\Category;
 use App\Comment;
+use App\Setting;
 
 class Helper
 {
@@ -186,6 +187,13 @@ class Helper
         }
 
         return ob_get_clean();
+    }
+
+    public static function get_settings()
+    {
+        $parametre = Setting::first();
+
+        return $parametre;
     }
 
 }

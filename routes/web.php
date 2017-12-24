@@ -22,6 +22,8 @@ Route::get('search/{s?}', 'SearchesController@getIndex')->where('s', '[\w\d]+');
 
 //Back End
 Route::get('/admin', 'AdminController@index');
+Route::get('/admin/settings', 'SettingController@index')->name('settings');
+Route::put('/admin/settings', 'SettingController@update')->name('settings.update');
 Route::resource('/admin/posts', 'PostController');
 Route::resource('/admin/categories', 'CategoriesController');
 Route::resource('comments', 'CommentsController');

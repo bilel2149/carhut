@@ -10,8 +10,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#" id="logo-panel">
+      <a class="navbar-brand" href="#" id="logo-panel" style="padding:0 15px;">
+        @if ($parametre->small_logo && File::exists(public_path("uploads/logos/".$parametre->small_logo)))
+        <img src="{{ asset('uploads/logos/' . $parametre->small_logo) }}" alt="{{ $parametre->title }}" />
+        @else
         <img src="{{asset('../assets/img/logo.png')}}" alt="Golabi Admin">
+        @endif
         <!-- <i class="fa fa-slack"></i> Golabi Admin -->
       </a>
 
