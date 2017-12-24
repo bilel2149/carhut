@@ -68,20 +68,6 @@
 			</div>
 			<!--./ Add Task in sidebar list modal -->
 
-				<div class="container">
-            <div class="row">
-                <div class="col-md-12">
-
-                    @if( Session::has('success') )
-                        <div class="mt-5 alert alert-success" role="alert">
-                            {{ Session::get('success') }}
-                        </div>
-                    @endif
-
-                </div>
-            </div>
-        </div>
-
 			<!-- Add Contact in sidebar list modal -->
 			<div class="modal fade" id="modal-add-contact" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
 				<div class="modal-dialog">
