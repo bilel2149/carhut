@@ -20,12 +20,25 @@ Route::get('article/{slug}', 'ArticlesController@getSingle')->name('single');
 Route::get('articles', 'ArticlesController@getIndex')->name('articles.index');
 Route::get('search/{s?}', 'SearchesController@getIndex')->where('s', '[\w\d]+');
 
+//Login Admin
+Route::prefix('admin')->group(function() {
+  Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+  Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+  Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+  // Password reset routes
+  Route::post('/password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+  Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+  Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
+  Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+});
 //Back End
-Route::get('/admin', 'AdminController@index');
-Route::get('/admin/settings', 'SettingController@index')->name('settings');
-Route::put('/admin/settings', 'SettingController@update')->name('settings.update');
-Route::resource('/admin/posts', 'PostController');
-Route::resource('/admin/categories', 'CategoriesController');
-Route::resource('comments', 'CommentsController');
-Route::post('comments/{comment}/approve', 'CommentsController@approveComment')->name('comment.approve');
-Route::post('comments/{comment}/unapprove', 'CommentsController@unapproveComment')->name('comment.unapprove');
+Route::group(['middleware' => ['auth:admin']], function () {
+  Route::get('/admin', 'AdminController@index')->name('admin');
+  Route::get('/admin/settings', 'SettingController@index')->name('settings');
+  Route::put('/admin/settings', 'SettingController@update')->name('settings.update');
+  Route::resource('/admin/posts', 'PostController');
+  Route::resource('/admin/categories', 'CategoriesController');
+  Route::resource('comments', 'CommentsController');
+  Route::post('comments/{comment}/approve', 'CommentsController@approveComment')->name('comment.approve');
+  Route::post('comments/{comment}/unapprove', 'CommentsController@unapproveComment')->name('comment.unapprove');
+});
