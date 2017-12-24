@@ -13,15 +13,28 @@
                         <div class="footer-column col-md-6 col-sm-6 col-xs-12">
                             <div class="footer-widget about-widget">
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="{{asset('images/logo-three.png')}}" alt="">
+                                    <a href="index.html">
+                                      @if ($parametre->footer_logo && File::exists(public_path("uploads/logos/".$parametre->footer_logo)))
+                                      <img src="{{ asset('uploads/logos/' . $parametre->footer_logo) }}" alt="{{ $parametre->title }}" />
+                                      @else
+                                      <img src="{{asset('images/logo-three.png')}}" alt="Carhut">
+                                      @endif
                                     </a>
                                 </div>
                                 <div class="widget-content">
-                                    <div class="text"> Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</div>
+                                    @if ($parametre->footer_description)
+                                    <div class="text">{{ $parametre->footer_description }}</div>
+                                    @endif
                                     <ul class="contact-info">
-                                        <li><span class="icon flaticon-location"></span> 452 marshal street, Newyork, USA</li>
-                                        <li><span class="icon flaticon-mail"></span> info@beirutfinance.com</li>
-                                        <li><span class="icon flaticon-smartphone-call"></span> +01 2345 6789</li>
+                                      @if ($parametre->adresse)
+                                        <li><span class="icon flaticon-location"></span> {{ $parametre->adresse }}, {{ $parametre->city }}, {{ $parametre->country }}</li>
+                                      @endif
+                                      @if ($parametre->email)
+                                        <li><span class="icon flaticon-mail"></span> {{ $parametre->email }}</li>
+                                      @endif
+                                      @if ($parametre->phone)
+                                        <li><span class="icon flaticon-smartphone-call"></span> {{ $parametre->phone }}</li>
+                                      @endif
                                     </ul>
                                 </div>
                             </div>
@@ -78,18 +91,30 @@
 
                                     <div class="social-links">
                                         <ul class="clearfix">
-                                            <li><a href="#"><span class="icon fa fa-facebook-f"></span> Facebook</a>
+                                          @if ($parametre->facebook)
+                                            <li><a href="{{ $parametre->facebook }}"><span class="icon fa fa-facebook-f"></span> Facebook</a>
                                             </li>
-                                            <li><a href="#"><span class="icon fa fa-twitter"></span> Twitter</a>
+                                          @endif
+                                          @if ($parametre->twitter)
+                                            <li><a href="{{ $parametre->twitter }}"><span class="icon fa fa-twitter"></span> Twitter</a>
                                             </li>
-                                            <li><a href="#"><span class="icon fa fa-google-plus"></span> Goole plus</a>
+                                          @endif
+                                          @if ($parametre->google_plus)
+                                            <li><a href="{{ $parametre->google_plus }}"><span class="icon fa fa-google-plus"></span> Goole plus</a>
                                             </li>
-                                            <li><a href="#"><span class="icon fa fa-linkedin"></span> Linkedin</a>
+                                          @endif
+                                          @if ($parametre->linkedin)
+                                            <li><a href="{{ $parametre->linkedin }}"><span class="icon fa fa-linkedin"></span> Linkedin</a>
                                             </li>
-                                            <li><a href="#"><span class="icon fa fa-skype"></span> skype</a>
+                                          @endif
+                                          @if ($parametre->skype)
+                                            <li><a href="{{ $parametre->skype }}"><span class="icon fa fa-skype"></span> skype</a>
                                             </li>
-                                            <li><a href="#"><span class="icon fa fa-whatsapp"></span> whatsapp</a>
+                                          @endif
+                                          @if ($parametre->whatsapp)
+                                            <li><a href="{{ $parametre->whatsapp }}"><span class="icon fa fa-whatsapp"></span> whatsapp</a>
                                             </li>
+                                          @endif
                                         </ul>
                                     </div>
                                 </div>
@@ -142,7 +167,9 @@
     <!--Footer Bottom-->
     <div class="footer-bottom">
         <div class="auto-container">
-            <div class="text">Copyright &copy; All Rights Reserved carhut</div>
+          @if ($parametre->copyright)
+            <div class="text">{{$parametre->copyright}}</div>
+          @endif
         </div>
     </div>
 

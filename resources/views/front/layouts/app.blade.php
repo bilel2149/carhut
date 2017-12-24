@@ -1,9 +1,13 @@
 <!DOCTYPE html>
+<?php $parametre = Helper::get_settings(); ?>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>carhut || Car Repair Service HTML 5 Responsive Template</title>
+    <title>@if ($parametre->title) {{ $parametre->title }} @endif ||</title>
+    @if ($parametre->meta_description)
+    <meta name="description" content="{{ $parametre->meta_description }}" />
+    @endif
     <!-- Stylesheets -->
     {!! Html::style('css/bootstrap.css') !!}
     {!! Html::style('css/revolution-slider.css') !!}

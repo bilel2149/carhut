@@ -1,7 +1,8 @@
 <!DOCTYPE html>
+<?php $parametre = Helper::get_settings(); ?>
 <html>
 	<head>
-		<title>Golabi Admin - Blank page</title>
+		<title>@if ($parametre->title) {{ $parametre->title }} @endif Admin ||</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		{!! Html::style('../assets/vendors/bootstrap/css/bootstrap.min.css') !!}
