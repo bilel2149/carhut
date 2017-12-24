@@ -19,6 +19,7 @@
 						</ul>
 					</div>
 
+
           <!-- main content -->
 					<div id="content">
 						<div id="sortable-panel" class="">
@@ -27,6 +28,14 @@
 								<h2>Parametre de théme</h2>
 								<h5></h5>
 							</div>
+
+              <div class="col-md-12">
+                  @if( Session::has('success') )
+                      <div class="mt-5 alert alert-success" role="alert">
+                          {{ Session::get('success') }}
+                      </div>
+                  @endif
+              </div>
 
 
 							<div class="col-md-12 ">
