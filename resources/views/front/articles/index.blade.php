@@ -4,7 +4,7 @@
 
 @section('content')
 <!--Page Title-->
-<section class="page-title" style="background-image:url(images/background/page-title-1.jpg);">
+<section class="page-title" style="background-image:url({{asset('images/background/page-title-1.jpg')}});">
     <div class="auto-container">
         <div class="row clearfix">
             <!--Title -->

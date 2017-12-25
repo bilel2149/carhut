@@ -7,6 +7,7 @@ use App\Post;
 use App\Category;
 use App\Comment;
 use App\Setting;
+use App\Service;
 
 class Helper
 {
@@ -189,11 +190,31 @@ class Helper
         return ob_get_clean();
     }
 
+    //get list of settings
     public static function get_settings()
     {
         $parametre = Setting::first();
 
         return $parametre;
+    }
+
+    //get list recent posts
+    public static function get_recent_posts()
+    {
+        $recentPosts = Post::take(3)->latest()->get();
+
+        return $recentPosts;
+    }
+
+    //get List of services
+    public static function get_services() {
+
+        $services = Service::get();
+
+        if( $services )
+            return $services;
+
+        return false;
     }
 
 }
