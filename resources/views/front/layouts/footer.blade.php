@@ -46,18 +46,12 @@
                                 <h2>Services</h2>
                                 <div class="widget-content">
                                     <ul class="list">
-                                        <li><a href="#">Break Checkup</a>
-                                        </li>
-                                        <li><a href="#">Inspections service</a>
-                                        </li>
-                                        <li><a href="#">Engine Repair</a>
-                                        </li>
-                                        <li><a href="#">Car Cleaning</a>
-                                        </li>
-                                        <li><a href="#">Break Checkup</a>
-                                        </li>
-                                        <li><a href="#">Engine Upgrades</a>
-                                        </li>
+                                      <?php $services = Helper::get_services(); ?>
+                                      <?php foreach ($services as $service): ?>
+                                          <li>
+                                            <a href="{{ route('home') }}/service/{{ $service->service_slug }}">{{ $service->service_title }}</a>
+                                          </li>
+                                      <?php endforeach; ?>
                                     </ul>
                                 </div>
                             </div>
@@ -122,40 +116,27 @@
                         </div>
 
                         <!--Footer Column-->
+                        <?php $recentPosts = Helper::get_recent_posts(); ?>
+                        @if( $recentPosts->count() )
                         <div class="footer-column col-md-6 col-sm-6 col-xs-12">
                             <div class="footer-widget posts-widget">
-                                <h2>Recent Posts</h2>
+                                <h2>Articles récents</h2>
                                 <div class="widget-content">
-                                    <!--Post-->
-                                    <div class="post">
-                                        <figure class="post-thumb">
-                                            <a href="#"><img src="{{asset('images/resource/post-thumb-1.jpg')}}" alt="">
-                                            </a>
-                                        </figure>
-                                        <h4><a href="#">News title with image</a></h4>
-                                        <div class="time"><span class="fa fa-calendar"></span> Jun 12,2016</div>
-                                    </div>
-                                    <!--Post-->
-                                    <div class="post">
-                                        <figure class="post-thumb">
-                                            <a href="#"><img src="{{asset('images/resource/post-thumb-2.jpg')}}" alt="">
-                                            </a>
-                                        </figure>
-                                        <h4><a href="#">News title with image</a></h4>
-                                        <div class="time"><span class="fa fa-calendar"></span> Jun 14,2016</div>
-                                    </div>
-                                    <!--Post-->
-                                    <div class="post">
-                                        <figure class="post-thumb">
-                                            <a href="#"><img src="{{asset('images/resource/post-thumb-3.jpg')}}" alt="">
-                                            </a>
-                                        </figure>
-                                        <h4><a href="#">News title with image</a></h4>
-                                        <div class="time"><span class="fa fa-calendar"></span> Jun 17,2016</div>
-                                    </div>
+                                    @foreach( $recentPosts as $post )
+                                      <!--Post-->
+                                      <div class="post">
+                                          <figure class="post-thumb">
+                                              <a href="/article/{{ $post->post_slug }}"><img src="{{asset('/uploads/')}}/{{ $post->post_thumbnail }}" alt="{{ $post->post_title }}">
+                                              </a>
+                                          </figure>
+                                          <h4><a href="/article/{{ $post->post_slug }}">{{ $post->post_title }}</a></h4>
+                                          <div class="time"><span class="fa fa-calendar"></span> {{ date('j M, Y', strtotime( $post->created_at )) }}</div>
+                                      </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
+                        @endif
 
                     </div>
                 </div>

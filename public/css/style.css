@@ -3252,7 +3252,7 @@ ul,li{
 	position:relative;
 	min-height:62px;
 	padding-left:80px;
-	padding-top:5px;
+	padding-top:0;
 	margin-bottom:30px;
 }
 

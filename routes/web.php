@@ -18,7 +18,13 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('article/{slug}', 'ArticlesController@getSingle')->name('single');
 Route::get('articles', 'ArticlesController@getIndex')->name('articles.index');
+Route::get('category/{id}', 'CategoriesController@getSingle')->name('category');
 Route::get('search/{s?}', 'SearchesController@getIndex')->where('s', '[\w\d]+');
+Route::get('services', 'ServicesController@getIndex')->name('services.front');
+Route::get('service/{slug}', 'ServicesController@getSingle')->name('service.single');
+
+Route::get('/contact', 'ContactController@show')->name('contact');
+Route::post('/contact',  'ContactController@mailToAdmin');
 
 //Login Admin
 Route::prefix('admin')->group(function() {
@@ -41,4 +47,5 @@ Route::group(['middleware' => ['auth:admin']], function () {
   Route::resource('comments', 'CommentsController');
   Route::post('comments/{comment}/approve', 'CommentsController@approveComment')->name('comment.approve');
   Route::post('comments/{comment}/unapprove', 'CommentsController@unapproveComment')->name('comment.unapprove');
+  Route::resource('/admin/services', 'ServicesController');
 });

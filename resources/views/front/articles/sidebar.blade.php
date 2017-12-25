@@ -21,18 +21,17 @@
             <div class="sidebar-title">
                 <h3>Categories</h3>
             </div>
-
+            <?php $categories = Helper::get_categories(); ?>
             <ul class="list">
-                <li><a href="#">cooling kit</a>
-                </li>
-                <li><a href="#">Engine kit</a>
-                </li>
-                <li><a href="#">car Engine</a>
-                </li>
-                <li><a href="#">single parts</a>
-                </li>
-                <li><a href="#">break Kit</a>
-                </li>
+              <?php
+                if( $categories ) {
+                  foreach( $categories as $category ) {
+                    ?>
+                  <li><a href="#">{{$category->category_name}}</a></li>
+                  <?php
+                }
+              }
+            ?>
             </ul>
 
         </div>
@@ -41,12 +40,12 @@
         <!-- Popular Posts -->
         <div class="sidebar-widget popular-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
             <div class="sidebar-title">
-                <h3>Recent Posts</h3>
+                <h3>Articles récents</h3>
             </div>
             @foreach( $recentPosts as $post )
               <article class="post">
                   <figure class="post-thumb">
-                      <a href="#">
+                      <a href="/article/{{ $post->post_slug }}">
                         <img src="{{asset('/uploads/')}}/{{ $post->post_thumbnail }}" alt="{{ $post->post_title }}"/>
                       </a>
                   </figure>

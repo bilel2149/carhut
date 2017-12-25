@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Category;
+use App\Post;
 use Session;
 
 class CategoriesController extends Controller
@@ -21,6 +22,15 @@ class CategoriesController extends Controller
         $categories = Category::paginate( 10 );
 
         return view('backend.categories.index', ['categories' => $categories]);
+    }
+
+    public function getSingle( $id ) {
+      $posts = Post::where('post_type', 'post')
+          ->where('category_ID', '=', $id)
+          ->orderBy('created_at', 'desc')
+          ->paginate( 6 );
+
+      return view('front.articles.index', ['posts' => $posts]);
     }
 
     /**

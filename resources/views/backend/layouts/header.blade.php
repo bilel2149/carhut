@@ -21,13 +21,6 @@
 
 
     </div>
-    <form action="#" class="form-search-mobile pull-right">
-      <input id="search-fld" class="search-mobile" type="text" name="param" placeholder="Search ...">
-      <button id="submit-search-mobile" type="submit">
-        <i class="fa fa-search"></i>
-      </button>
-      <a href="#" id="cancel-search-mobile" title="Cancel Search"><i class="fa fa-times"></i></a>
-    </form>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 
@@ -284,7 +277,7 @@
 
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img alt="Golabi Avatar Admin" src="{{asset('../assets/img/avatars/avatar.png')}}" height="50" width="50" class="img-circle" />
-            Albert Jackson
+            {{ Auth::user()->name }}
             <strong class="caret"></strong>
           </a>
           <ul class="dropdown-menu">
@@ -292,15 +285,12 @@
               <a href="#">Profile<span class="fa fa-user pull-right"></span></a>
             </li>
             <li>
-              <a href="#">Setting<span class="fa fa-cog pull-right"></span></a>
-            </li>
-            <li>
-              <a href="#">Messages<span class="badge pull-right"> 42 </span></a>
+              <a href="{{ route('settings') }}">Parametre<span class="fa fa-cog pull-right"></span></a>
             </li>
             <li class="divider">
             </li>
             <li>
-              <a href="#">Sign out<span class="fa fa-power-off pull-right"></span></a>
+              <a href="{{ route('admin.logout') }}">Déconnexion<span class="fa fa-power-off pull-right"></span></a>
             </li>
           </ul>
         </li>
@@ -323,15 +313,6 @@
 
 
       </ul>
-      <!-- search form in header -->
-      <form class="navbar-form navbar-right" >
-        <div class="form-group">
-          <input type="text" class="form-control search-header" placeholder="Enter Keyword" />
-          <button type="submit" class="btn btn-link search-header-btn" >
-          <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </form>
 
 
     </div>

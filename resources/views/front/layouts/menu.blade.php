@@ -26,22 +26,14 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown"><a href="#">Services</a>
+            <li class="dropdown {{ Request::is('services.front') ? 'current' : '' }}"><a href="#">Services</a>
                 <ul>
-                    <li><a href="services.html">Our Services</a>
+                    <li class=""><a href="{{ route('services.front') }}">Nos Services</a>
                     </li>
-                    <li><a href="service-single-1.html">Break Checkup</a>
-                    </li>
-                    <li><a href="service-single-2.html">Inspections service</a>
-                    </li>
-                    <li><a href="service-single-3.html">Engine Repair</a>
-                    </li>
-                    <li><a href="service-single-4.html">Car Cleaning</a>
-                    </li>
-                    <li><a href="service-single-5.html">Battery restore</a>
-                    </li>
-                    <li><a href="service-single-6.html">Engine Upgrades</a>
-                    </li>
+                    <?php $services = Helper::get_services(); ?>
+                    <?php foreach ($services as $service): ?>
+                        <li><a href="{{ route('home') }}/service/{{ $service->service_slug }}">{{ $service->service_title }}</a>
+                    <?php endforeach; ?>
                 </ul>
             </li>
             <li class="dropdown"><a href="#">Portfolio</a>
@@ -67,7 +59,7 @@
                 </ul>
             </li>
             <li class="{{ Request::is('articles') ? 'current' : '' }}"><a href="{{ route('articles.index') }}">Actualités</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="{{ route('contact') }}">Contact Us</a></li>
             @if (Auth::guest())
             <li><a href="{{ route('login') }}">Connexion</a></li>
             <li><a href="{{ route('register') }}">Inscription</a></li>
