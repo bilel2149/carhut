@@ -8,6 +8,7 @@ use App\Category;
 use App\Comment;
 use App\Setting;
 use App\Service;
+use App\Slider;
 
 class Helper
 {
@@ -213,6 +214,17 @@ class Helper
 
         if( $services )
             return $services;
+
+        return false;
+    }
+
+    //get List of sliders
+    public static function get_sliders() {
+
+        $sliders = Slider::where('slider_status', '1')->get();
+
+        if( $sliders )
+            return $sliders;
 
         return false;
     }
