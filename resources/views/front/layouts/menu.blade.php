@@ -66,10 +66,13 @@
             @else
             <li class="dropdown">
                 <a href="#">
-                    {{ Auth::user()->name }} <span class="caret"></span>
+                    {{ Auth::user()->name }} {{ Auth::user()->surname }} <span class="caret"></span>
                 </a>
 
                 <ul>
+                    <li>
+                      <a href="{{ route('profile') }}">Profile</a>
+                    </li>
                     <li>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();

@@ -25,6 +25,8 @@ Route::get('service/{slug}', 'ServicesController@getSingle')->name('service.sing
 
 Route::get('/contact', 'ContactController@show')->name('contact');
 Route::post('/contact',  'ContactController@mailToAdmin');
+Route::get('/profile', 'usersController@getProfile')->name('profile');
+Route::put('/profile/update', 'usersController@updateProfile')->name('profile.update');
 
 //Login Admin
 Route::prefix('admin')->group(function() {
@@ -49,4 +51,5 @@ Route::group(['middleware' => ['auth:admin']], function () {
   Route::post('comments/{comment}/unapprove', 'CommentsController@unapproveComment')->name('comment.unapprove');
   Route::resource('/admin/services', 'ServicesController');
   Route::resource('/admin/sliders', 'SliderController');
+  Route::resource('/admin/users', 'UsersController');
 });

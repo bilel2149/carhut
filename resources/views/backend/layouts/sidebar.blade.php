@@ -26,14 +26,44 @@
 
               <li>
                 <a href="{{ route('settings') }}">
-                  <i class="menu-icon fa fa-desktop"></i>
+                  <i class="menu-icon fa fa-cog"></i>
                   <span class="menu-text"> Parametre de théme </span>
                 </a>
+              </li>
+              <li class="">
+                <a href="#" class="dropdown-toggle">
+                  <i class="menu-icon fa fa-users"></i>
+                  <span class="menu-text"> Utilisateurs </span>
+
+                  <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                <ul class="submenu nav-show"  >
+                  <li class="">
+                    <a href="{{ route('users.index') }}" >
+                      <i class="menu-icon fa fa-users"></i>
+                      <span class="menu-text">Tous les utilisateurs</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+
+                  <li >
+                    <a href="{{ route('users.create') }}">
+                      <i class="menu-icon fa fa-caret-right"></i>
+                      <span class="menu-text">Ajouter un utilisateur</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+
+                </ul>
               </li>
 
               <li class="">
                 <a href="#" class="dropdown-toggle">
-                  <i class="menu-icon fa fa-desktop"></i>
+                  <i class="menu-icon fa fa-file-text-o"></i>
                   <span class="menu-text"> Articles </span>
 
                   <b class="arrow fa fa-angle-down"></b>
@@ -81,7 +111,7 @@
 
               <li class="">
                 <a href="#" class="dropdown-toggle">
-                  <i class="menu-icon fa fa-desktop"></i>
+                  <i class="menu-icon fa fa-comments"></i>
                   <span class="menu-text"> Commentaires </span>
 
                   <b class="arrow fa fa-angle-down"></b>
@@ -102,7 +132,7 @@
 
               <li class="">
                 <a href="#" class="dropdown-toggle">
-                  <i class="menu-icon fa fa-desktop"></i>
+                  <i class="menu-icon fa fa-handshake-o"></i>
                   <span class="menu-text"> Services </span>
 
                   <b class="arrow fa fa-angle-down"></b>
@@ -133,7 +163,7 @@
 
               <li class="">
                 <a href="#" class="dropdown-toggle">
-                  <i class="menu-icon fa fa-desktop"></i>
+                  <i class="menu-icon fa fa-picture-o"></i>
                   <span class="menu-text"> Sliders </span>
 
                   <b class="arrow fa fa-angle-down"></b>

@@ -6732,6 +6732,7 @@ ul,li{
 .shop-form input[type="tel"],
 .shop-form input[type="number"],
 .shop-form input[type="url"],
+.shop-form input[type="file"],
 .shop-form select,
 .shop-form textarea{
 	position:relative;

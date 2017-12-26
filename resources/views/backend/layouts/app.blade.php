@@ -9,7 +9,7 @@
 		{!! Html::style('../assets/vendors/font-awesome/css/font-awesome.min.css') !!}
 
 		<!-- Related css to this page -->
-
+		@yield('styles')
 		<!-- Yeptemplate css --><!-- Please use *.min.css in production -->
 		{!! Html::style('../assets/css/yep-style.css') !!}
 		{!! Html::style('../assets/css/yep-vendors.css') !!}
