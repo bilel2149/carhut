@@ -131,6 +131,37 @@
                 </ul>
               </li>
 
+              <li class="">
+                <a href="#" class="dropdown-toggle">
+                  <i class="menu-icon fa fa-desktop"></i>
+                  <span class="menu-text"> Sliders </span>
+
+                  <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                <ul class="submenu nav-show"  >
+                  <li class="">
+                    <a href="{{ route('sliders.index') }}" >
+                      <i class="menu-icon fa fa-caret-right"></i>
+                      <span class="menu-text">Tous les sliders</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+
+                  <li >
+                    <a href="{{ route('sliders.create') }}">
+                      <i class="menu-icon fa fa-caret-right"></i>
+                      <span class="menu-text">Ajouter un slider</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+
+                </ul>
+              </li>
+
            </ul>
 
 

@@ -48,4 +48,5 @@ Route::group(['middleware' => ['auth:admin']], function () {
   Route::post('comments/{comment}/approve', 'CommentsController@approveComment')->name('comment.approve');
   Route::post('comments/{comment}/unapprove', 'CommentsController@unapproveComment')->name('comment.unapprove');
   Route::resource('/admin/services', 'ServicesController');
+  Route::resource('/admin/sliders', 'SliderController');
 });

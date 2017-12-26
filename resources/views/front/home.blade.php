@@ -8,84 +8,14 @@
             <div class="tp-banner-container">
                 <div class="tp-banner">
                     <ul>
-
-                        <li data-transition="slidingoverlayleft" data-slotamount="1" data-masterspeed="1000" data-thumb="images/main-slider/1.jpg" data-saveperformance="off" data-title="Awesome Title Here">
-                            <img src="images/main-slider/1.jpg" alt="" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-
-                            <div class="tp-caption sfl sfb tp-resizeme" data-x="left" data-hoffset="30" data-y="center" data-voffset="-120" data-speed="1500" data-start="0" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn">
-                                <div class="italic-text">Welcome To carhut</div>
-                            </div>
-
-                            <div class="tp-caption sfl sfb tp-resizeme" data-x="left" data-hoffset="30" data-y="center" data-voffset="-30" data-speed="1500" data-start="500" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn">
-                                <h2>THE BEST CAR RAPAIR SERVICE <br>WE REPAIR SINCE 2001</h2>
-                            </div>
-
-                            <div class="tp-caption sfl sfb tp-resizeme" data-x="left" data-hoffset="30" data-y="center" data-voffset="50" data-speed="1500" data-start="0" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn">
-                                <div class="italic-text">"We try to give the best car repaie service"</div>
-                            </div>
-
-                            <div class="tp-caption sfr sfb tp-resizeme" data-x="left" data-hoffset="30" data-y="center" data-voffset="110" data-speed="1500" data-start="1000" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one margin-right-20">Read more about carhut<span class="fa fa-caret-right"></span></a><a href="#" class="theme-btn btn-style-two">Purchase Now</a>
-                            </div>
-
-                        </li>
-
-                        <li data-transition="slidingoverlayleft" data-slotamount="1" data-masterspeed="1000" data-thumb="images/main-slider/2.jpg" data-saveperformance="off" data-title="Awesome Title Here">
-                            <img src="images/main-slider/2.jpg" alt="" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-
-                            <div class="tp-caption sfl sfb tp-resizeme" data-x="right" data-hoffset="-20" data-y="center" data-voffset="-120" data-speed="1500" data-start="0" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn">
-                                <div class="italic-text">Welcome To carhut</div>
-                            </div>
-
-                            <div class="tp-caption sfl sfb tp-resizeme" data-x="right" data-hoffset="-20" data-y="center" data-voffset="-60" data-speed="1500" data-start="500" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn">
-                                <h2>WE HEAR  SMILE AND REPAIE</h2>
-                            </div>
-
-                            <div class="tp-caption sfl sfb tp-resizeme" data-x="right" data-hoffset="-20" data-y="center" data-voffset="-5" data-speed="1500" data-start="500" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn">
-                                <h2>OUR GOAL IS SATISFACTION</h2>
-                            </div>
-
-                            <div class="tp-caption sfl sfb tp-resizeme" data-x="right" data-hoffset="-20" data-y="center" data-voffset="45" data-speed="1500" data-start="0" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn">
-                                <div class="italic-text">"We try to give the best car repaie service"</div>
-                            </div>
-
-                            <div class="tp-caption sfr sfb tp-resizeme" data-x="right" data-hoffset="-20" data-y="center" data-voffset="105" data-speed="1500" data-start="1000" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Read more about carhut<span class="fa fa-caret-right"></span></a>
-                            </div>
-
-                            <div class="tp-caption sfr sfb tp-resizeme" data-x="right" data-hoffset="-275" data-y="center" data-voffset="105" data-speed="1500" data-start="1500" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-two">Purchase Now</a>
-                            </div>
-
-                        </li>
-
-                        <li data-transition="slidingoverlayleft" data-slotamount="1" data-masterspeed="1000" data-thumb="images/main-slider/3.jpg" data-saveperformance="off" data-title="Awesome Title Here">
-                            <img src="images/main-slider/3.jpg" alt="" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-
-                            <div class="tp-caption sfl sfb tp-resizeme" data-x="center" data-hoffset="15" data-y="center" data-voffset="-120" data-speed="1500" data-start="0" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn">
-                                <div class="italic-text">Welcome To carhut</div>
-                            </div>
-
-                            <div class="tp-caption sfl sfb tp-resizeme" data-x="center" data-hoffset="15" data-y="center" data-voffset="-60" data-speed="1500" data-start="500" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn">
-                                <h2>THE ONLY CAR RAPAIR SERVICE</h2>
-                            </div>
-
-                            <div class="tp-caption sfl sfb tp-resizeme" data-x="center" data-hoffset="15" data-y="center" data-voffset="-5" data-speed="1500" data-start="500" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn">
-                                <h2>WE REPAIR WITH LOVE</h2>
-                            </div>
-
-                            <div class="tp-caption sfl sfb tp-resizeme" data-x="center" data-hoffset="15" data-y="center" data-voffset="45" data-speed="1500" data-start="0" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn">
-                                <div class="italic-text">"We try to give the best car repaie service"</div>
-                            </div>
-
-                            <div class="tp-caption sfr sfb tp-resizeme" data-x="center" data-hoffset="-70" data-y="center" data-voffset="105" data-speed="1500" data-start="1000" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Read more about carhut<span class="fa fa-caret-right"></span></a>
-                            </div>
-
-                            <div class="tp-caption sfr sfb tp-resizeme" data-x="center" data-hoffset="140" data-y="center" data-voffset="105" data-speed="1500" data-start="1500" data-easing="easeOutExpo" data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200" data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-two">Purchase Now</a>
-                            </div>
-
-                        </li>
-
-
+                        <?php $sliders = Helper::get_sliders(); ?>
+                        <?php foreach ($sliders as $slider): ?>
+                            <li data-transition="slidingoverlayleft" data-slotamount="1" data-masterspeed="1000" data-thumb="{{asset('/uploads/sliders/')}}/{{ $slider->slider_image }}" data-saveperformance="off" data-title="Awesome Title Here">
+                                <img src="{{asset('/uploads/sliders/')}}/{{ $slider->slider_image }}" alt="{{ $slider->slider_title }}" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                {!! $slider->slider_content !!}
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
-
                     <div class="tp-bannertimer"></div>
                 </div>
             </div>
