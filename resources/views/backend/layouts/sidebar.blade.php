@@ -63,6 +63,35 @@
 
               <li class="">
                 <a href="#" class="dropdown-toggle">
+                  <i class="menu-icon fa fa-file"></i>
+                  <span class="menu-text"> Pages </span>
+
+                  <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                <ul class="submenu nav-show"  >
+                  <li class="">
+                    <a href="{{ route('pages.index') }}" >
+                      <i class="menu-icon fa fa-caret-right"></i>
+                      <span class="menu-text">Tous les pages</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+                  <li >
+                    <a href="{{ route('pages.create') }}">
+                      <i class="menu-icon fa fa-caret-right"></i>
+                      <span class="menu-text">Ajouter une page</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="">
+                <a href="#" class="dropdown-toggle">
                   <i class="menu-icon fa fa-file-text-o"></i>
                   <span class="menu-text"> Articles </span>
 
@@ -101,6 +130,24 @@
                     <a href="{{ route('categories.create') }}">
                       <i class="menu-icon fa fa-caret-right"></i>
                       <span class="menu-text">Ajouter une catégorie</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+
+                  <li >
+                    <a href="{{ route('tags.index') }}">
+                      <i class="menu-icon fa fa-caret-right"></i>
+                      <span class="menu-text">Tous les tags</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+
+                  <li >
+                    <a href="{{ route('tags.create') }}">
+                      <i class="menu-icon fa fa-caret-right"></i>
+                      <span class="menu-text">Ajouter un tag</span>
                     </a>
 
                     <b class="arrow"></b>

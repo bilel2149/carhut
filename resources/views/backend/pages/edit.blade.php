@@ -29,7 +29,7 @@
 								<a href="#">Home</a>
 							</li>
 							<li>
-								<a href="#">Articles</a>
+								<a href="#">Pages</a>
 							</li>
 						</ul>
 					</div>
@@ -39,7 +39,7 @@
 						<div id="sortable-panel" class="">
 
 							<div id="titr-content" class="col-md-12">
-								<h2>Modifier l'article : {{ $post->post_title }}</h2>
+								<h2>Modifier la page : {{ $post->post_title }}</h2>
 								<h5></h5>
 							</div>
 							<div class="col-md-12">
@@ -55,7 +55,7 @@
 									<div class="panel-heading">
 										<div class="panel-title">
 											<i class="fa fa-edit"></i>
-											Modifier l'article
+											Modifier la page
 											<div class="bars pull-right">
 												<a href="#"><i class="maximum fa fa-expand" data-toggle="tooltip" data-placement="bottom" title="Maximize"></i></a>
 												<a href="#"><i class="minimize fa fa-chevron-down" data-toggle="tooltip" data-placement="bottom" title="Collapse"></i></a>
@@ -67,10 +67,10 @@
 									<div class="panel-body">
 
 										<hr>
-										<form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+										<form action="{{ route('pages.update', $post->id) }}" method="POST" enctype="multipart/form-data">
 											{{ csrf_field() }}
 											{{ method_field('PUT') }}
-											<input type="hidden" name="post_type" value="post" />
+											<input type="hidden" name="post_type" value="page" />
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group{{ $errors->has('post_title') ? ' has-error' : '' }}">
@@ -95,76 +95,41 @@
 		                            </span>
 		                        @endif
 													</div>
-													<div class="form-group{{ $errors->has('category_ID') ? ' has-error' : '' }}">
-														<label for="category_ID" class="control-label">
-															Category <span class="symbol required"></span>
-														</label>
-														<?php $categories = Helper::get_categories(); ?>
-														<select name="category_ID" id="category_ID" class="form-control">
-															<option value="">Choisir une categorie</option>
-															<?php
-																if( $categories ) {
-																	foreach( $categories as $category ) {
-																		?>
-																			<option value="{{ $category->id }}" {{ $category->id == $post->category_ID ? 'selected="selected"' : '' }}>{{ $category->category_name }}</option>
-																		<?php
-																	}
-																}
-															?>
-														</select>
-														@if ($errors->has('category_ID'))
-		                            <span class="help-block">
-		                                <strong>{{ $errors->first('category_ID') }}</strong>
-		                            </span>
-		                        @endif
-
-													</div>
 													<div class="form-group">
 														<label for="post_thumbnail" class="control-label">
 															Image
 														</label>
 														<input type="file" class="form-control" id="post_thumbnail" name="post_thumbnail">
 													</div>
+                          @if ($post->post_thumbnail && File::exists(public_path("uploads/pages/".$post->post_thumbnail)))
+                          <div class="form-group">
+                            <img src="{{asset('/uploads/pages')}}/{{ $post->post_thumbnail }}" alt="{{ $post->post_title }}" style="max-width: 100%;"/>
+                          </div>
+                          @endif
 												</div>
 												<div class="col-md-6">
-													<div class="form-group{{ $errors->has('post_content') ? ' has-error' : '' }}">
-														<label for="post_content" class="control-label">
-															Contenu <span class="symbol required"></span>
-														</label>
-														<textarea name="post_content" placeholder="Contenu" class="form-control" id="post_content" cols="80" rows="10">{{ $post->post_content }}</textarea>
-														@if ($errors->has('post_content'))
-																<span class="help-block">
-																		<strong>{{ $errors->first('post_content') }}</strong>
-																</span>
-														@endif
-													</div>
-
-													<div class="form-group">
-														<label for="post_slug" class="control-label">
-															Tags <span class="symbol required"></span>
-														</label>
-														<?php $tags = Helper::get_tags(); ?>
-														<select multiple style="width:100%" class="select2" name="tags[]" >
-															<?php
-																if( $tags ) {
-																	foreach( $tags as $tag ) {
-																		?>
-																			<option value="{{ $tag->id }}"
-																			<?php
-																				foreach ($post->tags as $postTag) {
-																				?>
-																					@if($postTag->id == $tag->id)
-																					selected
-																					@endif
-																				<?php
-																				}
-																			?>
-																			>{{ $tag->name }}</option>
-																		<?php
-																	}
-																}
-															?>
-														</select>
+                          <div class="form-group{{ $errors->has('post_content') ? ' has-error' : '' }}">
+														<div  class="panel panel-default">
+															<div class="panel-heading">
+																<div class="panel-title">
+																	<i class="fa fa-pencil"></i>
+																	Contenu
+																	<div class="bars pull-right">
+																		<a href="#"><i class="maximum fa fa-expand" data-toggle="tooltip" data-placement="bottom" title="Maximize"></i></a>
+																		<a href="#"><i class="minimize fa fa-chevron-down" data-toggle="tooltip" data-placement="bottom" title="Collapse"></i></a>
+																		<a href="#"><i data-target="#panel2" data-dismiss="alert" data-toggle="tooltip" data-placement="bottom" title="Close" class="fa fa-times"></i></a>
+																	</div>
+																</div>
+															</div>
+															<div class="panel-body no-padding">
+																<textarea cols="80" id="post_content" name="post_content" rows="10">{{ $post->post_content }}</textarea>
+																@if ($errors->has('post_content'))
+																		<span class="help-block">
+																				<strong>{{ $errors->first('post_content') }}</strong>
+																		</span>
+																@endif
+															</div>
+														</div>
 													</div>
 
 												</div>
@@ -219,11 +184,32 @@
     {!! Html::script('../assets/vendors/wysihtml5/js/bootstrap-wysihtml5.min.js') !!}
     {!! Html::script('../assets/vendors/wysihtml5/js/wysihtml5.min.js') !!}
     {!! Html::script('../assets/vendors/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') !!}
+    {!! Html::script('../assets/vendors/summernote/js/summernote.min.js') !!}
+		{!! Html::script('../assets/vendors/bootstrap-markdown/js/markdown.min.js') !!}
+		{!! Html::script('../assets/vendors/bootstrap-markdown/js/to-markdown.min.js') !!}
+		{!! Html::script('../assets/vendors/bootstrap-markdown/js/bootstrap-markdown.min.js') !!}
+		{!! Html::script('../assets/vendors/ckeditor/js/ckeditor.js') !!}
+		{!! Html::script('../assets/vendors/tinymce/tinymce.min.js') !!}
 		<script>
 				$(document).ready(function(){
 						$('.select2').select2({
 								allowClear : true,
 								width : '100%'
+						});
+
+            // TinyMCE editor Script
+						tinymce.init({
+						    selector: "#post_content",
+						    menubar:false,
+							skin: 'light',
+							plugins: [
+							"advlist autolink link image lists charmap print preview hr anchor pagebreak code  ",
+							"searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking spellchecker",
+							"fullscreen table contextmenu directionality emoticons paste textcolor  "
+							],
+							image_advtab: true,
+							toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | insertdatetime nonbreaking spellchecker contextmenu directionality emoticons paste textcolor codemirror | image | media | link unlink anchor | print preview |  forecolor backcolor | hr anchor pagebreak searchreplace wordcount visualblocks visualchars | code | fullscreen |  styleselect | fontselect fontsizeselect | table | cut copy paste",
+							image_advtab: true ,
 						});
 				});
 		</script>

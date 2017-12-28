@@ -14,7 +14,7 @@
 								<a href="#">Home</a>
 							</li>
 							<li>
-								<a href="#">Services</a>
+								<a href="#">Pages</a>
 							</li>
 						</ul>
 					</div>
@@ -24,10 +24,10 @@
 						<div id="sortable-panel" class="">
 
 							<div id="titr-content" class="col-md-12">
-								<h2>Tous les services</h2>
+								<h2>Tous les pages</h2>
 								<h5>common form elements and layouts ...</h5>
 								<div class="actions">
-									<a href="{{ route('services.create') }}" class="btn btn-success ">Ajouter un nouveau</a>
+									<a href="{{ route('pages.create') }}" class="btn btn-success ">Ajouter un nouveau</a>
 								</div>
 							</div>
 							<div class="col-md-12">
@@ -58,8 +58,11 @@
 										    <thead>
 										        <tr>
 										            <th>ID</th>
+																<th>Image</th>
 																<th>Slug</th>
 										            <th>Titre</th>
+										            <th>Contenu</th>
+										            <th>Type</th>
 																<th>Date création</th>
 																<th>Date mise à jour</th>
 										            <th>Actions</th>
@@ -69,23 +72,32 @@
 										    <tbody>
 
 
-															@foreach( $services as $service )
+															@foreach( $posts as $post )
 																<tr>
-																	<td>{{ $service->id }}</td>
-											            <td>{{ $service->service_slug }}</td>
-											            <td>{{ $service->service_title }}</td>
-																	<td>{{ date( 'j/m/Y', strtotime( $service->created_at ) ) }}</td>
-																	<td>{{ date( 'j/m/Y', strtotime( $service->updated_at ) ) }}</td>
-											            <td class="center">
+																	<td>{{ $post->id }}</td>
+											            <td><img src="{{asset('/uploads/pages/')}}/{{ $post->post_thumbnail }}" alt="{{ $post->post_title }}" style="width:100px;"/></td>
+											            <td>{{ $post->post_slug }}</td>
+											            <td>{{ $post->post_title }}</td>
+											            <td>
+																		@if ( strlen( $post->post_content ) > 60 )
+																			{{ substr( $post->post_content, 0, 60 ) }} ...
+																		@else
+																			{{ $post->post_content }}
+																		@endif
+																	</td>
+											            <td>{{ $post->post_type }}</td>
+																	<td>{{ date( 'j/m/Y', strtotime( $post->created_at ) ) }}</td>
+																	<td>{{ date( 'j/m/Y', strtotime( $post->updated_at ) ) }}</td>
+																	<td class="center">
                                       <div class="">
                                         <ul class="list-inline">
                                           <li>
-                                            <a href="{{ route('services.edit', $service->id) }}" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('pages.edit', $post->id) }}" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
                                           </li>
                                           <li>
                                             {!! Form::open([
       															            'method' => 'DELETE',
-      															            'route' => ['services.destroy', $service->id]
+      															            'route' => ['pages.destroy', $post->id]
       															        ]) !!}
                                                 {{ Form::button('<i class="fa fa-times fa fa-white"></i>', ['type' => 'submit', 'class' => 'btn btn-xs btn-bricky tooltips'] )  }}
       															        {!! Form::close() !!}

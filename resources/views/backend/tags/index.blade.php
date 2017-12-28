@@ -14,7 +14,7 @@
 								<a href="#">Home</a>
 							</li>
 							<li>
-								<a href="#">Services</a>
+								<a href="#">Tags</a>
 							</li>
 						</ul>
 					</div>
@@ -24,10 +24,10 @@
 						<div id="sortable-panel" class="">
 
 							<div id="titr-content" class="col-md-12">
-								<h2>Tous les services</h2>
+								<h2>Tous les tags</h2>
 								<h5>common form elements and layouts ...</h5>
 								<div class="actions">
-									<a href="{{ route('services.create') }}" class="btn btn-success ">Ajouter un nouveau</a>
+									<a href="{{ route('tags.create') }}" class="btn btn-success ">Ajouter un nouveau</a>
 								</div>
 							</div>
 							<div class="col-md-12">
@@ -58,8 +58,7 @@
 										    <thead>
 										        <tr>
 										            <th>ID</th>
-																<th>Slug</th>
-										            <th>Titre</th>
+										            <th>Nom</th>
 																<th>Date création</th>
 																<th>Date mise à jour</th>
 										            <th>Actions</th>
@@ -69,23 +68,22 @@
 										    <tbody>
 
 
-															@foreach( $services as $service )
+															@foreach( $tags as $tag )
 																<tr>
-																	<td>{{ $service->id }}</td>
-											            <td>{{ $service->service_slug }}</td>
-											            <td>{{ $service->service_title }}</td>
-																	<td>{{ date( 'j/m/Y', strtotime( $service->created_at ) ) }}</td>
-																	<td>{{ date( 'j/m/Y', strtotime( $service->updated_at ) ) }}</td>
-											            <td class="center">
+																	<td>{{ $tag->id }}</td>
+											            <td>{{ $tag->name }}</td>
+																	<td>{{ date( 'j/m/Y', strtotime( $tag->created_at ) ) }}</td>
+																	<td>{{ date( 'j/m/Y', strtotime( $tag->updated_at ) ) }}</td>
+																	<td class="center">
                                       <div class="">
                                         <ul class="list-inline">
                                           <li>
-                                            <a href="{{ route('services.edit', $service->id) }}" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('tags.edit', $tag->id) }}" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
                                           </li>
                                           <li>
                                             {!! Form::open([
       															            'method' => 'DELETE',
-      															            'route' => ['services.destroy', $service->id]
+      															            'route' => ['tags.destroy', $tag->id]
       															        ]) !!}
                                                 {{ Form::button('<i class="fa fa-times fa fa-white"></i>', ['type' => 'submit', 'class' => 'btn btn-xs btn-bricky tooltips'] )  }}
       															        {!! Form::close() !!}

@@ -25,7 +25,10 @@
 
 							<div id="titr-content" class="col-md-12">
 								<h2>Tous les articles</h2>
-								<h5></h5>
+								<h5>common form elements and layouts ...</h5>
+								<div class="actions">
+									<a href="{{ route('posts.create') }}" class="btn btn-success ">Ajouter un nouveau</a>
+								</div>
 							</div>
 							<div class="col-md-12">
                   @if( Session::has('success') )
@@ -87,22 +90,22 @@
 																	<td>{{ $post->category_ID }}</td>
 																	<td>{{ date( 'j/m/Y', strtotime( $post->created_at ) ) }}</td>
 																	<td>{{ date( 'j/m/Y', strtotime( $post->updated_at ) ) }}</td>
-											            <td>
-																		<div class=" action-buttons">
-
-
-																			<a class="green" href="{{ route('posts.edit', $post->id) }}" style="float: left; margin-right: 10px;">
-																				<i class=" fa fa-pencil bigger-130"></i>
-																			</a>
-
-																			{!! Form::open([
-															            'method' => 'DELETE',
-															            'route' => ['posts.destroy', $post->id]
-															        ]) !!}
-															            {!! Form::submit('Delete', ['class' => 'btn btn-link red']) !!}
-															        {!! Form::close() !!}
-
-																		</div>
+																	<td class="center">
+                                      <div class="">
+                                        <ul class="list-inline">
+                                          <li>
+                                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                                          </li>
+                                          <li>
+                                            {!! Form::open([
+      															            'method' => 'DELETE',
+      															            'route' => ['posts.destroy', $post->id]
+      															        ]) !!}
+                                                {{ Form::button('<i class="fa fa-times fa fa-white"></i>', ['type' => 'submit', 'class' => 'btn btn-xs btn-bricky tooltips'] )  }}
+      															        {!! Form::close() !!}
+                                          </li>
+                                        </ul>
+                                      </div>
 											            </td>
 																</tr>
 															@endforeach

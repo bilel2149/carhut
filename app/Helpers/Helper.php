@@ -9,6 +9,7 @@ use App\Comment;
 use App\Setting;
 use App\Service;
 use App\Slider;
+use App\Tag;
 
 class Helper
 {
@@ -225,6 +226,19 @@ class Helper
 
         if( $sliders )
             return $sliders;
+
+        return false;
+    }
+
+    /**
+     * Return all tags if any otherwise false
+     */
+    public static function get_tags() {
+
+        $tags = Tag::get();
+
+        if( $tags )
+            return $tags;
 
         return false;
     }

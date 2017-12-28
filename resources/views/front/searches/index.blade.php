@@ -36,7 +36,7 @@
                         <div class="default-blog-post col-md-6 col-sm-6 col-xs-12">
                             <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
                                 <figure class="image-box">
-                                    <a href="blog-single.html">
+                                    <a href="/article/{{ $post->post_slug }}">
                                       <img src="{{asset('/uploads/')}}/{{ $post->post_thumbnail }}" alt="{{ $post->post_title }}"/>
                                     </a>
                                     <div class="date"><span class="day">{{ date('d', strtotime( $post->created_at )) }}</span>{{ date('M-Y', strtotime( $post->created_at )) }}</div>

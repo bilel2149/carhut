@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Post;
-use App\Tag;
 use Image;
 use Session;
 
-class PostController extends Controller
+class PageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +19,21 @@ class PostController extends Controller
      */
     public function index()
     {
-      $posts = Post::where('post_type', 'post')->paginate( 10 );
+      $posts = Post::where('post_type', 'page')->paginate( 10 );
 
-      return view('backend.posts.index', ['posts' => $posts]);
+      return view('backend.pages.index', ['posts' => $posts]);
+    }
+
+
+    public function getPage( $post_slug ){
+        $page = Post::where('post_slug', '=', $post_slug)
+                    ->where('post_type', 'page')
+                    ->first();
+        if($page)
+          return view('front.pages.index', compact('page'));
+        else
+          abort(404);
+
     }
 
     /**
@@ -32,7 +43,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('backend.posts.create');
+        return view('backend.pages.create');
     }
 
     /**
@@ -68,7 +79,7 @@ class PostController extends Controller
             $post_thumbnail     = $request->file('post_thumbnail');
             $filename           = time() . '.' . $post_thumbnail->getClientOriginalExtension();
 
-            Image::make($post_thumbnail)->resize(533, 307)->save( public_path('uploads/' . $filename ) );
+            Image::make($post_thumbnail)->resize(533, 307)->save( public_path('uploads/pages/' . $filename ) );
 
             // Set post-thumbnail url
             $post->post_thumbnail = $filename;
@@ -80,11 +91,11 @@ class PostController extends Controller
         $post->tags()->sync($request->get('tags'));
 
         // Store data for only a single request and destory
-        Session::flash( 'sucess', 'Post published.' );
+        Session::flash( 'sucess', 'Page published.' );
 
         // Redirect to `posts.show` route
         // Use route:list to view the `Action` or where this routes going to
-        return redirect()->route('posts.index');
+        return redirect()->route('pages.index');
     }
 
     /**
@@ -95,7 +106,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-      return redirect()->route('posts.index');
+      return redirect()->route('pages.index');
     }
 
     /**
@@ -106,9 +117,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::with('tags')->findOrFail( $id );
+        $post = Post::findOrFail( $id );
 
-        return view('backend.posts.edit', [ 'post' => $post ]);
+        return view('backend.pages.edit', [ 'post' => $post ]);
     }
 
     /**
@@ -134,7 +145,6 @@ class PostController extends Controller
         $post->post_title       = $request->input('post_title');
         $post->post_slug        = $request->input('post_slug');
         $post->post_content     = $request->input('post_content');
-        $post->category_ID      = $request->input('category_ID');
 
 
         // Check if file is present
@@ -142,7 +152,7 @@ class PostController extends Controller
             $post_thumbnail     = $request->file('post_thumbnail');
             $filename           = time() . '.' . $post_thumbnail->getClientOriginalExtension();
 
-            Image::make($post_thumbnail)->resize(533, 307)->save( public_path('/uploads/' . $filename ) );
+            Image::make($post_thumbnail)->resize(533, 307)->save( public_path('uploads/pages/' . $filename ) );
 
             // Set post-thumbnail url
             $post->post_thumbnail = $filename;
@@ -153,9 +163,9 @@ class PostController extends Controller
         //Add tags
         $post->tags()->sync($request->tags, false);
 
-        Session::flash('success', 'Post updated.');
+        Session::flash('success', 'Page updated.');
 
-        return redirect()->route('posts.index');
+        return redirect()->route('pages.index');
     }
 
     /**
@@ -172,8 +182,8 @@ class PostController extends Controller
        // https://laravel.com/docs/5.4/queries#deletes
        $post->delete();
 
-       Session::flash('success', 'Post deleted.');
+       Session::flash('success', 'Page deleted.');
 
-       return redirect()->route('posts.index');
+       return redirect()->route('pages.index');
     }
 }

@@ -68,12 +68,16 @@
             <div class="sidebar-title">
                 <h3>Tags</h3>
             </div>
-
-            <a href="#">repair</a>
-            <a href="#">Cleaning</a>
-            <a href="#">checkup</a>
-            <a href="#">modify</a>
-            <a href="#">Service</a>
+            <?php $tags = Helper::get_tags(); ?>
+            <?php
+              if( $tags ) {
+                foreach ($post->tags as $postTag) {
+                  ?>
+                    <a href="#">{{ $postTag->name }}</a>
+                  <?php
+                }
+              }
+            ?>
         </div>
 
     </aside>

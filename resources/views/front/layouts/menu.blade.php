@@ -12,40 +12,16 @@
     <div class="navbar-collapse collapse clearfix">
         <ul class="navigation clearfix">
             <li class="{{ Request::is('/') ? 'current' : '' }}"><a href="{{ route('home') }}">Accueil</a></li>
-            <li class="dropdown"><a href="about-us.html">About Us</a>
-                <ul>
-                    <li><a href="about-us.html">About Us</a>
-                    </li>
-                    <li><a href="our-history.html">Our History</a>
-                    </li>
-                    <li><a href="our-team.html">Our Team</a>
-                    </li>
-                    <li><a href="pricing.html">pricing</a>
-                    </li>
-                    <li><a href="error-page.html">404 Page</a>
-                    </li>
-                </ul>
-            </li>
+            <li><a href="{{ route('home') }}/page/about-us">Qui somme nous</a></li>
             <li class="dropdown {{ Request::is('services.front') ? 'current' : '' }}"><a href="#">Services</a>
                 <ul>
-                    <li class=""><a href="{{ route('services.front') }}">Nos Services</a>
-                    </li>
                     <?php $services = Helper::get_services(); ?>
                     <?php foreach ($services as $service): ?>
                         <li><a href="{{ route('home') }}/service/{{ $service->service_slug }}">{{ $service->service_title }}</a>
                     <?php endforeach; ?>
                 </ul>
             </li>
-            <li class="dropdown"><a href="#">Portfolio</a>
-                <ul>
-                    <li><a href="portfolio.html">Our Portfolio</a>
-                    </li>
-                    <li><a href="portfolio-2.html">Portfolio style two</a>
-                    </li>
-                    <li><a href="portfolio-3.html">Portfolio style Three</a>
-                    </li>
-                </ul>
-            </li>
+            <li><a href="#">Portfolio</a></li>
             <li class="dropdown"><a href="#">Shop</a>
                 <ul>
                     <li><a href="shop.html">Our Shop</a>

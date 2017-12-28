@@ -27,6 +27,8 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
+    'mail_host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
