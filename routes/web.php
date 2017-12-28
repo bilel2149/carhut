@@ -28,6 +28,11 @@ Route::post('/contact',  'ContactController@mailToAdmin');
 Route::get('/profile', 'usersController@getProfile')->name('profile');
 Route::put('/profile/update', 'usersController@updateProfile')->name('profile.update');
 
+//API
+Route::group(array('prefix' => 'api'), function() {
+    Route::resource('services','API\ServicesController');
+});
+
 //Login Admin
 Route::prefix('admin')->group(function() {
   Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
