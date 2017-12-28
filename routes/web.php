@@ -18,6 +18,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('article/{slug}', 'ArticlesController@getSingle')->name('single');
 Route::get('articles', 'ArticlesController@getIndex')->name('articles.index');
+Route::get('page/{slug}', 'PageController@getPage')->name('page');
 Route::get('category/{id}', 'CategoriesController@getSingle')->name('category');
 Route::get('search/{s?}', 'SearchesController@getIndex')->where('s', '[\w\d]+');
 Route::get('services', 'ServicesController@getIndex')->name('services.front');
@@ -50,6 +51,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
   Route::get('/admin/settings', 'SettingController@index')->name('settings');
   Route::put('/admin/settings', 'SettingController@update')->name('settings.update');
   Route::resource('/admin/posts', 'PostController');
+  Route::resource('/admin/pages', 'PageController');
   Route::resource('/admin/categories', 'CategoriesController');
   Route::resource('/admin/tags', 'TagsController');
   Route::resource('comments', 'CommentsController');

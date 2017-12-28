@@ -12,7 +12,7 @@
     <div class="navbar-collapse collapse clearfix">
         <ul class="navigation clearfix">
             <li class="{{ Request::is('/') ? 'current' : '' }}"><a href="{{ route('home') }}">Accueil</a></li>
-            <li><a href="#">Qui somme nous</a></li>
+            <li><a href="{{ route('home') }}/page/about-us">Qui somme nous</a></li>
             <li class="dropdown {{ Request::is('services.front') ? 'current' : '' }}"><a href="#">Services</a>
                 <ul>
                     <?php $services = Helper::get_services(); ?>

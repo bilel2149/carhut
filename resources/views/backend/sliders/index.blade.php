@@ -25,7 +25,10 @@
 
 							<div id="titr-content" class="col-md-12">
 								<h2>Tous les sliders</h2>
-								<h5></h5>
+								<h5>common form elements and layouts ...</h5>
+								<div class="actions">
+									<a href="{{ route('sliders.create') }}" class="btn btn-success ">Ajouter un nouveau</a>
+								</div>
 							</div>
 							<div class="col-md-12">
                   @if( Session::has('success') )
