@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Post;
+use App\Tag;
 use Image;
 use Session;
 
@@ -75,6 +76,9 @@ class PostController extends Controller
 
         $post->save();
 
+        //Add tags
+        $post->tags()->sync($request->get('tags'));
+
         // Store data for only a single request and destory
         Session::flash( 'sucess', 'Post published.' );
 
@@ -91,9 +95,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-      $post = Post::findOrFail( $id );
-
-      return view('backend.posts.show', [ 'post' => $post ]);
+      return redirect()->route('posts.index');
     }
 
     /**
@@ -104,7 +106,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::findOrFail( $id );
+        $post = Post::with('tags')->findOrFail( $id );
 
         return view('backend.posts.edit', [ 'post' => $post ]);
     }
@@ -147,6 +149,9 @@ class PostController extends Controller
         }
 
         $post->save();
+
+        //Add tags
+        $post->tags()->sync($request->tags, false);
 
         Session::flash('success', 'Post updated.');
 

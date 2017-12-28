@@ -106,6 +106,24 @@
                     <b class="arrow"></b>
                   </li>
 
+                  <li >
+                    <a href="{{ route('tags.index') }}">
+                      <i class="menu-icon fa fa-caret-right"></i>
+                      <span class="menu-text">Tous les tags</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+
+                  <li >
+                    <a href="{{ route('tags.create') }}">
+                      <i class="menu-icon fa fa-caret-right"></i>
+                      <span class="menu-text">Ajouter un tag</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+
                 </ul>
               </li>
 

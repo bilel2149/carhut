@@ -73,22 +73,22 @@
 											            <td>{{ $category->category_name }}</td>
 																	<td>{{ date( 'j/m/Y', strtotime( $category->created_at ) ) }}</td>
 																	<td>{{ date( 'j/m/Y', strtotime( $category->updated_at ) ) }}</td>
-											            <td>
-																		<div class=" action-buttons">
-
-
-																			<a class="green" href="{{ route('categories.edit', $category->id) }}" style="float: left; margin-right: 10px;">
-																				<i class=" fa fa-pencil bigger-130"></i>
-																			</a>
-
-																			{!! Form::open([
-															            'method' => 'DELETE',
-															            'route' => ['categories.destroy', $category->id]
-															        ]) !!}
-															            {!! Form::submit('Delete', ['class' => 'btn btn-link red']) !!}
-															        {!! Form::close() !!}
-
-																		</div>
+																	<td class="center">
+                                      <div class="">
+                                        <ul class="list-inline">
+                                          <li>
+                                            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                                          </li>
+                                          <li>
+                                            {!! Form::open([
+      															            'method' => 'DELETE',
+      															            'route' => ['categories.destroy', $category->id]
+      															        ]) !!}
+                                                {{ Form::button('<i class="fa fa-times fa fa-white"></i>', ['type' => 'submit', 'class' => 'btn btn-xs btn-bricky tooltips'] )  }}
+      															        {!! Form::close() !!}
+                                          </li>
+                                        </ul>
+                                      </div>
 											            </td>
 																</tr>
 															@endforeach

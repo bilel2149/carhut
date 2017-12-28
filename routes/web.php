@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
   Route::put('/admin/settings', 'SettingController@update')->name('settings.update');
   Route::resource('/admin/posts', 'PostController');
   Route::resource('/admin/categories', 'CategoriesController');
+  Route::resource('/admin/tags', 'TagsController');
   Route::resource('comments', 'CommentsController');
   Route::post('comments/{comment}/approve', 'CommentsController@approveComment')->name('comment.approve');
   Route::post('comments/{comment}/unapprove', 'CommentsController@unapproveComment')->name('comment.unapprove');

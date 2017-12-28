@@ -59,7 +59,7 @@
     <div class="header-lower">
 
         <div class="auto-container">
-            <div class="nav-outer clearfix">
+            <div class="clearfix">
 
                 @include('front.layouts.menu')
 

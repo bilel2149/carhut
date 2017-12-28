@@ -14,7 +14,7 @@
 								<a href="#">Home</a>
 							</li>
 							<li>
-								<a href="#">Articles</a>
+								<a href="#">Tags</a>
 							</li>
 						</ul>
 					</div>
@@ -24,7 +24,7 @@
 						<div id="sortable-panel" class="">
 
 							<div id="titr-content" class="col-md-12">
-								<h2>Tous les articles</h2>
+								<h2>Tous les tags</h2>
 								<h5></h5>
 							</div>
 							<div class="col-md-12">
@@ -55,12 +55,7 @@
 										    <thead>
 										        <tr>
 										            <th>ID</th>
-																<th>Image</th>
-																<th>Slug</th>
-										            <th>Titre</th>
-										            <th>Contenu</th>
-										            <th>Type</th>
-																<th>Categorie</th>
+										            <th>Nom</th>
 																<th>Date création</th>
 																<th>Date mise à jour</th>
 										            <th>Actions</th>
@@ -70,33 +65,22 @@
 										    <tbody>
 
 
-															@foreach( $posts as $post )
+															@foreach( $tags as $tag )
 																<tr>
-																	<td>{{ $post->id }}</td>
-											            <td><img src="{{asset('/uploads/')}}/{{ $post->post_thumbnail }}" alt="{{ $post->post_title }}" style="width:100px;"/></td>
-											            <td>{{ $post->post_slug }}</td>
-											            <td>{{ $post->post_title }}</td>
-											            <td>
-																		@if ( strlen( $post->post_content ) > 60 )
-																			{{ substr( $post->post_content, 0, 60 ) }} ...
-																		@else
-																			{{ $post->post_content }}
-																		@endif
-																	</td>
-											            <td>{{ $post->post_type }}</td>
-																	<td>{{ $post->category_ID }}</td>
-																	<td>{{ date( 'j/m/Y', strtotime( $post->created_at ) ) }}</td>
-																	<td>{{ date( 'j/m/Y', strtotime( $post->updated_at ) ) }}</td>
+																	<td>{{ $tag->id }}</td>
+											            <td>{{ $tag->name }}</td>
+																	<td>{{ date( 'j/m/Y', strtotime( $tag->created_at ) ) }}</td>
+																	<td>{{ date( 'j/m/Y', strtotime( $tag->updated_at ) ) }}</td>
 																	<td class="center">
                                       <div class="">
                                         <ul class="list-inline">
                                           <li>
-                                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('tags.edit', $tag->id) }}" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
                                           </li>
                                           <li>
                                             {!! Form::open([
       															            'method' => 'DELETE',
-      															            'route' => ['posts.destroy', $post->id]
+      															            'route' => ['tags.destroy', $tag->id]
       															        ]) !!}
                                                 {{ Form::button('<i class="fa fa-times fa fa-white"></i>', ['type' => 'submit', 'class' => 'btn btn-xs btn-bricky tooltips'] )  }}
       															        {!! Form::close() !!}
