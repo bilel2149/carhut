@@ -274,15 +274,18 @@
         </li>
 
         <li class="dropdown">
-
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            @if (Auth::user()->avatar && File::exists(public_path("uploads/admins/".Auth::user()->avatar)))
+              <img src="{{asset('/uploads/admins')}}/{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" height="50" width="50" class="img-circle"/>
+            @else
             <img alt="Golabi Avatar Admin" src="{{asset('../assets/img/avatars/avatar.png')}}" height="50" width="50" class="img-circle" />
-            {{ Auth::user()->name }}
+            @endif
+            {{ Auth::user()->name }} {{ Auth::user()->surname }}
             <strong class="caret"></strong>
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a href="#">Profile<span class="fa fa-user pull-right"></span></a>
+              <a href="{{ route('admins.edit', Auth::user()->id) }}">Profile<span class="fa fa-user pull-right"></span></a>
             </li>
             <li>
               <a href="{{ route('settings') }}">Parametre<span class="fa fa-cog pull-right"></span></a>

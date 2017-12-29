@@ -60,4 +60,5 @@ Route::group(['middleware' => ['auth:admin']], function () {
   Route::resource('/admin/services', 'ServicesController');
   Route::resource('/admin/sliders', 'SliderController');
   Route::resource('/admin/users', 'UsersController');
+  Route::resource('/admin/admins', 'AdminController');
 });

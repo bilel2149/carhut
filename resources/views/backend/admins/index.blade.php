@@ -11,10 +11,10 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="fa fa-home"></i>
-								<a href="#">Home</a>
+								<a href="#">Accueil</a>
 							</li>
 							<li>
-								<a href="#">Commentaires</a>
+								<a href="#">Admins</a>
 							</li>
 						</ul>
 					</div>
@@ -24,8 +24,11 @@
 						<div id="sortable-panel" class="">
 
 							<div id="titr-content" class="col-md-12">
-								<h2>Tous les Commentaires</h2>
-								<h5></h5>
+								<h2>Tous les admins</h2>
+								<h5>common form elements and layouts ...</h5>
+								<div class="actions">
+									<a href="{{ route('admins.create') }}" class="btn btn-success ">Ajouter un nouveau</a>
+								</div>
 							</div>
 							<div class="col-md-12">
                   @if( Session::has('success') )
@@ -54,12 +57,12 @@
 										<table id="posts" class="table table-striped table-bordered width-100 cellspace-0" >
 										    <thead>
 										        <tr>
-										            <th>Auteur</th>
-																<th>Email</th>
-																<th>Adresse ip</th>
-																<th>Site web</th>
-																<th>Comment</th>
-																<th>Date</th>
+										            <th>ID</th>
+																<th>Image</th>
+										            <th>Nom</th>
+                                <th>Email</th>
+																<th>Date création</th>
+																<th>Date mise à jour</th>
 										            <th>Actions</th>
 										        </tr>
 										    </thead>
@@ -67,53 +70,28 @@
 										    <tbody>
 
 
-                              @foreach( $comments as $comment )
+															@foreach( $admins as $admin )
 																<tr>
-																	<td>
-                                      <a href="{{ route('comments.edit', $comment->id) }}">
-                                          {{ $comment->comment_author }}
-                                      </a>
-                                  </td>
-																	<td>
-																		<a href="mailto:{{ $comment->comment_author_email }}">
-																		{{ $comment->comment_author_email }}
-																		</a>
+																	<td>{{ $admin->id }}</td>
+											            <td>
+																		@if ($admin->avatar && File::exists(public_path("uploads/admins/".$admin->avatar)))
+																			<img src="{{asset('/uploads/admins')}}/{{ $admin->avatar }}" alt="{{ $admin->name }}" style="max-width: 70px;"/>
+																		@endif
 																	</td>
-																	<td>{{ $comment->comment_author_IP }}</td>
-																	<td>
-																		<a href="{{ $comment->comment_author_url }}" target="_blank">
-																			{{ $comment->comment_author_url }}
-																		</a>
-																	</td>
-											            <td>{{ $comment->comment_content }}</td>
-																	<td>{{ date('F j, Y', strtotime( $comment->created_at )) }} @ {{ date('h:i', strtotime( $comment->created_at )) }}</td>
+											            <td>{{ $admin->name }} {{ $admin->surname }}</td>
+                                  <td>{{ $admin->email }}</td>
+																	<td>{{ date( 'j/m/Y', strtotime( $admin->created_at ) ) }}</td>
+																	<td>{{ date( 'j/m/Y', strtotime( $admin->updated_at ) ) }}</td>
 																	<td class="center">
                                       <div class="">
                                         <ul class="list-inline">
-																					<li>
-																						<?php if( $comment->comment_approved ) : ?>
-																								{!! Form::open([
-		      															            'method' => 'POST',
-		      															            'route' => ['comment.unapprove', $comment->id]
-		      															        ]) !!}
-		                                                {{ Form::button('<i class="fa fa-times fa fa-thumbs-o-down"></i> unapprove', ['type' => 'submit', 'class' => 'btn btn-xs btn-blue tooltips'] )  }}
-		      															        {!! Form::close() !!}
-				                                    <?php else : ?>
-																								{!! Form::open([
-		      															            'method' => 'POST',
-		      															            'route' => ['comment.approve', $comment->id]
-		      															        ]) !!}
-		                                                {{ Form::button('<i class="fa fa-times fa fa-thumbs-o-up"></i> approve', ['type' => 'submit', 'class' => 'btn btn-xs btn-green tooltips'] )  }}
-		      															        {!! Form::close() !!}
-				                                    <?php endif; ?>
-																					</li>
                                           <li>
-                                            <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('admins.edit', $admin->id) }}" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
                                           </li>
                                           <li>
                                             {!! Form::open([
       															            'method' => 'DELETE',
-      															            'route' => ['comments.destroy', $comment->id]
+      															            'route' => ['admins.destroy', $admin->id]
       															        ]) !!}
                                                 {{ Form::button('<i class="fa fa-times fa fa-white"></i>', ['type' => 'submit', 'class' => 'btn btn-xs btn-bricky tooltips'] )  }}
       															        {!! Form::close() !!}

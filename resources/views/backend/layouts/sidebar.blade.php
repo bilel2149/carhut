@@ -30,6 +30,38 @@
                   <span class="menu-text"> Parametre de théme </span>
                 </a>
               </li>
+
+              <li class="">
+                <a href="#" class="dropdown-toggle">
+                  <i class="menu-icon fa fa-user-secret"></i>
+                  <span class="menu-text"> Administrateurs </span>
+
+                  <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                <ul class="submenu nav-show"  >
+                  <li class="">
+                    <a href="{{ route('admins.index') }}" >
+                      <i class="menu-icon fa fa-users"></i>
+                      <span class="menu-text">Tous les administrateurs</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+
+                  <li >
+                    <a href="{{ route('admins.create') }}">
+                      <i class="menu-icon fa fa-caret-right"></i>
+                      <span class="menu-text">Ajouter un administrateur</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+
+                </ul>
+              </li>
+
               <li class="">
                 <a href="#" class="dropdown-toggle">
                   <i class="menu-icon fa fa-users"></i>
@@ -134,25 +166,35 @@
 
                     <b class="arrow"></b>
                   </li>
+                </ul>
+              </li>
 
-                  <li >
-                    <a href="{{ route('tags.index') }}">
+              <li class="">
+                <a href="#" class="dropdown-toggle">
+                  <i class="menu-icon fa fa-tags"></i>
+                  <span class="menu-text"> Tags </span>
+
+                  <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                <ul class="submenu nav-show"  >
+                  <li class="">
+                    <a href="{{ route('tags.index') }}" >
                       <i class="menu-icon fa fa-caret-right"></i>
                       <span class="menu-text">Tous les tags</span>
                     </a>
 
                     <b class="arrow"></b>
                   </li>
-
-                  <li >
-                    <a href="{{ route('tags.create') }}">
+                  <li class="">
+                    <a href="{{ route('tags.create') }}" >
                       <i class="menu-icon fa fa-caret-right"></i>
                       <span class="menu-text">Ajouter un tag</span>
                     </a>
 
                     <b class="arrow"></b>
                   </li>
-
                 </ul>
               </li>
 
