@@ -68,7 +68,7 @@ class CommentsController extends Controller
 
         // We have two options for this add new Migration and add 0 as the default value
         // or this magic trick here
-        $comment->comment_approved      = 0;
+        $comment->comment_approved      = 1;
 
         $comment->save();
 

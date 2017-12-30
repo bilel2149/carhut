@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\User;
+use App\Admin;
 use App\Post;
 use App\Category;
 use App\Comment;
@@ -44,7 +45,6 @@ class Helper
 
         return false;
     }
-
 
     /**
      * Return post_slug
