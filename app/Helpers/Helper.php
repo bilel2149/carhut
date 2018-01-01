@@ -203,7 +203,7 @@ class Helper
     //get list recent posts
     public static function get_recent_posts()
     {
-        $recentPosts = Post::take(3)->latest()->get();
+        $recentPosts = Post::where('post_type', 'post')->take(3)->latest()->get();
 
         return $recentPosts;
     }
