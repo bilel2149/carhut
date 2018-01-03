@@ -11,6 +11,8 @@
     <!-- Stylesheets -->
     {!! Html::style('css/bootstrap.css') !!}
     {!! Html::style('css/revolution-slider.css') !!}
+    {!! Html::style('css/nouislider.css') !!}
+    {!! Html::style('css/nouislider.pips.css') !!}
     {!! Html::style('css/style.css') !!}
 
     <!--Favicon-->
@@ -50,6 +52,7 @@
     {!! Html::script('js/jquery.fancybox-media.js') !!}
     {!! Html::script('js/isotope.js') !!}
     {!! Html::script('js/owl.js') !!}
+    {!! Html::script('js/nouislider.js') !!}
     {!! Html::script('js/wow.js') !!}
     {!! Html::script('js/jquery-ui.min.js') !!}
     {!! Html::script('js/color-settings.js') !!}

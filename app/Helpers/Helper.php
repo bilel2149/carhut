@@ -118,7 +118,7 @@ class Helper
      */
     public static function get_categories() {
 
-        $categories = Category::get();
+        $categories = Category::where('category_type', 'post')->get();
 
         if( $categories )
             return $categories;
@@ -137,6 +137,16 @@ class Helper
         $category = Category::where('id', $category_id)->first();
 
         return $category;
+    }
+
+    public static function get_categoriesshop() {
+
+        $categories = Category::where('category_type', 'shop')->get();
+
+        if( $categories )
+            return $categories;
+
+        return false;
     }
 
     /**

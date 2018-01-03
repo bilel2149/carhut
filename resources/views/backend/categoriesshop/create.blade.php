@@ -53,9 +53,9 @@
 									<div class="panel-body">
 
 										<hr>
-										<form action="{{ route('categories.store') }}" method="POST">
+										<form action="{{ route('categoriesshop.store') }}" method="POST">
 											{{ csrf_field() }}
-											<input type="hidden" name="category_type" value="post" />
+											<input type="hidden" name="category_type" value="shop" />
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group{{ $errors->has('category_name') ? ' has-error' : '' }}">

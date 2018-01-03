@@ -24,7 +24,7 @@
 						<div id="sortable-panel" class="">
 
 							<div id="titr-content" class="col-md-12">
-								<h2>Ajouter une catégorie</h2>
+								<h2>Modifier la catégorie : {{ $category->category_name }}</h2>
 								<h5></h5>
 							</div>
 							<div class="col-md-12">
@@ -41,7 +41,7 @@
 									<div class="panel-heading">
 										<div class="panel-title">
 											<i class="fa fa-edit"></i>
-											Nouvelle catégorie
+											Modifier la catégorie
 											<div class="bars pull-right">
 												<a href="#"><i class="maximum fa fa-expand" data-toggle="tooltip" data-placement="bottom" title="Maximize"></i></a>
 												<a href="#"><i class="minimize fa fa-chevron-down" data-toggle="tooltip" data-placement="bottom" title="Collapse"></i></a>
@@ -53,16 +53,17 @@
 									<div class="panel-body">
 
 										<hr>
-										<form action="{{ route('categories.store') }}" method="POST">
+										<form action="{{ route('categoriesshop.update', $category->id) }}" method="POST">
 											{{ csrf_field() }}
-											<input type="hidden" name="category_type" value="post" />
+											{{ method_field('PUT') }}
+											<input type="hidden" name="category_type" value="shop" />
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group{{ $errors->has('category_name') ? ' has-error' : '' }}">
 														<label for="category_name" class="control-label">
 															Titre <span class="symbol required"></span>
 														</label>
-														<input type="text" placeholder="Titre" class="form-control" id="category_name" name="category_name" value="{{ old('category_name') }}">
+														<input type="text" placeholder="Titre" class="form-control" id="category_name" name="category_name" value="{{ $category->category_name }}">
 														@if ($errors->has('category_name'))
 		                            <span class="help-block">
 		                                <strong>{{ $errors->first('category_name') }}</strong>
@@ -76,7 +77,7 @@
 														<label for="category_slug" class="control-label">
 															Slug <span class="symbol required"></span>
 														</label>
-														<input type="text" placeholder="Slug" class="form-control" id="category_slug" name="category_slug" value="{{ old('category_slug') }}">
+														<input type="text" placeholder="Slug" class="form-control" id="category_slug" name="category_slug" value="{{ $category->category_slug }}">
 														@if ($errors->has('category_slug'))
 		                            <span class="help-block">
 		                                <strong>{{ $errors->first('category_slug') }}</strong>
@@ -99,7 +100,7 @@
 												</div>
 												<div class="col-md-4">
 													<button class="btn btn-success btn-block" type="submit">
-														Enregistrer <i class="fa fa-arrow-circle-right"></i>
+														Modifier <i class="fa fa-arrow-circle-right"></i>
 													</button>
 												</div>
 											</div>
