@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
+use App\Category;
 use Image;
 use Session;
+use DB;
 
 class ProductsController extends Controller
 {
@@ -29,6 +31,32 @@ class ProductsController extends Controller
 
       return view('front.shop.index', ['products' => $products]);
     }
+
+    public function getSingle( $slug ) {
+    	$product = Product::where('slug', '=', $slug)->first();
+
+    	return view('front.shop.single', compact('product'));
+    }
+
+    public function getCategory( $category_id ) {
+      $category = Category::where('id', $category_id)->first();
+      // Query and paginate result
+      $products = Product::where('category_ID', $category->id)->paginate(6);
+
+      return view('front.shop.category', ['products' => $products, 'category' => $category ]);
+    }
+
+    public function getFilter(Request $request) {
+      $min = $request->input('min');
+      $max = $request->input('max');
+
+      $products = Product::where('price', '>=', $min)
+                  ->where('price', '<=', $max)
+                  ->paginate(10);
+
+      return view('front.shop.filter', ['products' => $products]);
+    }
+
 
     /**
      * Show the form for creating a new resource.

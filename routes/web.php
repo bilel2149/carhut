@@ -24,6 +24,10 @@ Route::get('search/{s?}', 'SearchesController@getIndex')->where('s', '[\w\d]+');
 Route::get('services', 'ServicesController@getIndex')->name('services.front');
 Route::get('service/{slug}', 'ServicesController@getSingle')->name('service.single');
 Route::get('shop', 'ProductsController@getIndex')->name('shop');
+Route::get('shop/{slug}', 'ProductsController@getSingle');
+Route::get('shopsearch/{s?}', 'SearchesController@searchProducts')->where('s', '[\w\d]+');
+Route::get('shopcategory/{category_id}', 'ProductsController@getCategory');
+Route::get('shopfilter', 'ProductsController@getFilter');
 
 Route::get('/contact', 'ContactController@show')->name('contact');
 Route::post('/contact',  'ContactController@mailToAdmin');

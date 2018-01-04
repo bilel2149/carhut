@@ -8,14 +8,14 @@
                 <div class="row clearfix">
                     <!--Title -->
                     <div class="title-column col-md-6 col-sm-12 col-xs-12">
-                        <h1>Shop</h1>
+                        <h1>Recherche : {{ $s }}</h1>
                     </div>
                     <!--Bread Crumb -->
                     <div class="breadcrumb-column col-md-6 col-sm-12 col-xs-12">
                         <ul class="bread-crumb clearfix">
-                            <li><a href="index.html">Home</a>
+                            <li><a href="">Home</a>
                             </li>
-                            <li class="active">Shop</li>
+                            <li class="active">Recherche</li>
                         </ul>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                             <!--Shop Items-->
                             <div class="shop-items">
                                 <div class="row clearfix">
-
+                                  @if( $products->count() )
                                     @foreach($products as $product)
                                     <!--Shop Item-->
                                     <div class="shop-item col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -83,6 +83,11 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                    @else
+
+                                        <p>Aucun produit trouvé</p>
+
+                                    @endif
 
                                 </div>
                             </div>

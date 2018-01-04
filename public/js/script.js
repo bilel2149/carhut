@@ -1,16 +1,16 @@
 (function($) {
-	
+
 	"use strict";
-	
-	
+
+
 	//Hide Loading Box (Preloader)
 	function handlePreloader() {
 		if($('.preloader').length){
 			$('.preloader').delay(200).fadeOut(300);
 		}
 	}
-	
-	
+
+
 	//Update header style + Scroll to Top
 	function headerStyle() {
 		if($('.main-header').length){
@@ -25,27 +25,27 @@
 			}
 		}
 	}
-	
+
 	headerStyle();
-	
-	
+
+
 	//Submenu Dropdown Toggle
 	if($('.main-header li.dropdown ul').length){
 		$('.main-header li.dropdown').append('<div class="dropdown-btn"><Span class="fa fa-angle-down"></span></div>');
-		
+
 		//Dropdown Button
 		$('.main-header li.dropdown .dropdown-btn').click(function() {
 			$(this).prev('ul').slideToggle(500);
 		});
-		
-		
+
+
 		//Disable dropdown parent link
 		$('.navigation li.dropdown > a').click(function(e) {
 			e.preventDefault();
 		});
 	}
-	
-	
+
+
 	//Revolution Slider Style One
 	if($('.main-slider .tp-banner').length){
 
@@ -123,8 +123,8 @@
 	  });
 
 	}
-	
-	
+
+
 	//Progress Bar / Levels
 	if($('.progress-levels .progress-box .bar-fill').length){
 		$(".progress-box .bar-fill").each(function() {
@@ -133,8 +133,8 @@
 			//$(this).parents('.progress-box').children('.percent').html(progressWidth+'%');
 		});
 	}
-	
-	
+
+
 	//Mixitup Gallery
 	if($('.filter-list').length){
 		$('.filter-list').mixItUp({});
@@ -147,18 +147,18 @@
 			$('#datepicker').datepicker();
 		};
 	}
-	
-	
-	
+
+
+
 	// Fact Counter
 	function factCounter() {
 		if($('.fact-counter').length){
 			$('.fact-counter .counter-column.animated').each(function() {
-		
+
 				var $t = $(this),
 					n = $t.find(".count-text").attr("data-stop"),
 					r = parseInt($t.find(".count-text").attr("data-speed"), 10);
-					
+
 				if (!$t.hasClass("counted")) {
 					$t.addClass("counted");
 					$({
@@ -176,34 +176,34 @@
 						}
 					});
 				}
-				
+
 			});
 		}
 	}
-	
-	
+
+
 	//Masonary
 	function enableMasonry() {
 		if($('.masonry-gallery').length){
-	
+
 			var winDow = $(window);
 			// Needed variables
 			var $container=$('.masonry-gallery .items-container');
-	
+
 			$container.isotope({
 				itemSelector: '.masonry-item',
 				 masonry: {
-					columnWidth : 0 
+					columnWidth : 0
 				 },
 				animationOptions:{
 					duration:500,
 					easing:'linear'
 				}
 			});
-	
+
 			winDow.bind('resize', function(){
 
-				$container.isotope({ 
+				$container.isotope({
 					itemSelector: '.masonry-item',
 					animationOptions: {
 						duration: 500,
@@ -214,10 +214,10 @@
 			});
 		}
 	}
-	
+
 	enableMasonry();
-	
-	
+
+
 	//Team Carousel Slider
 	if ($('.team-carousel').length) {
 		$('.team-carousel').owlCarousel({
@@ -245,10 +245,10 @@
 					items:3
 				}
 			}
-		});    		
+		});
 	}
-	
-	
+
+
 	//Single Item Carousel
 	if ($('.single-item-carousel').length) {
 		$('.single-item-carousel').owlCarousel({
@@ -271,7 +271,7 @@
 			}
 		});
 	}
-	
+
 	//client Slider
 	if($('.client-carsoule').length) {
 		$('.client-carsoule').owlCarousel({
@@ -282,45 +282,45 @@
 			autoWidth: true,
 			autoHeight: true,
 			dots: false,
-			responsive:{   
+			responsive:{
 			0:{
 			items:1
 			},
 			480:{
 			items:1
 			},
-			 
+
 			600:{
 			items:2
 			},
-			 
+
 			768:{
 			items:3
 			},
-			
+
 			1024:{
 			items:4
 			},
-			 
+
 			1280:{
 			items:3
 			},
-			 
+
 			1600:{
 			items:5
 			}
-			
+
 			}
 		});
 	}
-	
-	
+
+
 	//Mixitup Gallery
 	if($('.filter-list').length){
 		$('.filter-list').mixItUp({});
 	}
-	
-	
+
+
 	//LightBox / Fancybox
 	if($('.lightbox-image').length) {
 		$('.lightbox-image').fancybox({
@@ -331,19 +331,19 @@
 			}
 		});
 	}
-	
-	
+
+
 	//Accordion Box
 	if($('.accordion-box').length){
 		$(".accordion-box .acc-btn").click(function() {
-			
+
 			var target = $(this).parents('.accordion');
-			
+
 			if($(this).hasClass('active')!==true){
 			$('.accordion .acc-btn').removeClass('active');
-			
+
 			}
-			
+
 			if ($(this).next('.acc-content').is(':visible')){
 				//$(this).removeClass('active');
 				return false;
@@ -353,13 +353,13 @@
 				$('.accordion').removeClass('active-block');
 				$('.accordion .acc-content').slideUp(300);
 				target.addClass('active-block');
-				$(this).next('.acc-content').slideDown(300);	
+				$(this).next('.acc-content').slideDown(300);
 			}
-		});	
+		});
 	}
-	
-	
-	
+
+
+
 	//Jquery Spinner / Quantity Spinner
 	if($('.quantity-spinner').length){
 		$("input.quantity-spinner").TouchSpin({
@@ -374,13 +374,13 @@
 		var priceRange = document.getElementById('range-slider-price');
 
 		noUiSlider.create(priceRange, {
-			start: [ 100, 300 ],
-			limit: 500,
+			start: [ 100, 5000 ],
+			limit: 20000,
 			behaviour: 'drag',
 			connect: true,
 			range: {
-				'min': 50,
-				'max': 500
+				'min': 0,
+				'max': 20000
 			}
 		});
 
@@ -391,8 +391,8 @@
 			(handle ? limitFieldMax : limitFieldMin).value = values[handle];
 		});
 	}
-	
-	
+
+
 	//Product Tabs
 	if($('.prod-tabs .tab-btn').length){
 		$('.prod-tabs .tab-btn').click(function(e) {
@@ -407,8 +407,8 @@
 		});
 
 	}
-	
-	
+
+
 	//Contact Form Validation
 	if($('#contact-form').length){
 		$('#contact-form').validate({
@@ -429,8 +429,8 @@
 			}
 		});
 	}
-	
-	
+
+
 	// Scroll to a Specific Div
 	if($('.scroll-to-target').length){
 		$(".scroll-to-target").click(function() {
@@ -439,11 +439,11 @@
 		   $('html, body').animate({
 			   scrollTop: $(target).offset().top
 			 }, 1000);
-	
+
 		});
 	}
-	
-	
+
+
 	// Elements Animation
 	if($('.wow').length){
 		var wow = new WOW(
@@ -461,7 +461,7 @@
 /* ==========================================================================
    When document is ready, do
    ========================================================================== */
-   
+
 	$(document).ready(function() {
 		datepicker();
 
@@ -469,21 +469,21 @@
 /* ==========================================================================
    When document is Scrollig, do
    ========================================================================== */
-	
+
 	$(window).scroll(function() {
 		headerStyle();
 		factCounter();
 	});
-	
+
 /* ==========================================================================
    When document is loaded, do
    ========================================================================== */
-	
+
 	$(window).load(function() {
 		handlePreloader();
 		enableMasonry();
 	});
 
-	
+
 
 })(window.jQuery);
