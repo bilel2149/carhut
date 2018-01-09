@@ -36,13 +36,21 @@ Route::put('/profile/update', 'usersController@updateProfile')->name('profile.up
 
 //API
 Route::group(array('prefix' => 'api'), function() {
+    Route::post('login', 'API\UserController@login');
+    Route::post('register', 'API\UserController@register');
+
     Route::resource('services','API\ServicesController', ['only' => [
        'index', 'show'
     ]]);
     Route::resource('posts','API\PostsController', ['only' => [
        'index', 'show'
     ]]);
+    Route::get('post/{slug}', 'API\PostsController@getSingle');
     Route::post('auth', 'API\UserController@checkAuth');
+});
+
+Route::group(['middleware' => 'auth:api', 'prefix' => 'api'], function(){
+	Route::post('details', 'API\UserController@details');
 });
 
 //Login Admin

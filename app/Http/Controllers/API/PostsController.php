@@ -25,6 +25,17 @@ class PostsController extends Controller
              ),200);
   }
 
+  public function getSingle( $post_slug ) {
+    $recentPosts = Post::take(3)->latest()->get();
+    $post = Post::where('post_slug', '=', $post_slug)->first();
+
+    return response(array(
+            'error' => false,
+            'post' =>$post,
+            'recentPosts' => $recentPosts,
+           ),200);
+  }
+
 
   /**
    * Store a newly created resource in storage.
