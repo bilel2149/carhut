@@ -11,6 +11,9 @@
 |
 */
 
+// CORS
+header('Access-Control-Allow-Origin: http://localhost:8000');
+header('Access-Control-Allow-Credentials: true');
 
 Auth::routes();
 
@@ -35,9 +38,10 @@ Route::get('/profile', 'usersController@getProfile')->name('profile');
 Route::put('/profile/update', 'usersController@updateProfile')->name('profile.update');
 
 //API
-Route::group(array('prefix' => 'api'), function() {
+Route::group(['prefix' => 'api'], function() {
     Route::post('login', 'API\UserController@login');
     Route::post('register', 'API\UserController@register');
+    Route::get('/user', 'API\UserController@getUser');
 
     Route::resource('services','API\ServicesController', ['only' => [
        'index', 'show'
