@@ -21,19 +21,7 @@
                     <?php endforeach; ?>
                 </ul>
             </li>
-            <li><a href="#">Portfolio</a></li>
-            <li class="dropdown"><a href="#">Shop</a>
-                <ul>
-                    <li><a href="shop.html">Our Shop</a>
-                    </li>
-                    <li><a href="shop-single.html">Item Details</a>
-                    </li>
-                    <li><a href="shopping-cart.html">Shopping Cart</a>
-                    </li>
-                    <li><a href="checkout.html">Checkout</a>
-                    </li>
-                </ul>
-            </li>
+            <li class="{{ Request::is('shop') ? 'current' : '' }}"><a href="{{ route('shop') }}">Boutique</a></li>
             <li class="{{ Request::is('articles') ? 'current' : '' }}"><a href="{{ route('articles.index') }}">Actualités</a></li>
             <li><a href="{{ route('contact') }}">Contact Us</a></li>
             @if (Auth::guest())

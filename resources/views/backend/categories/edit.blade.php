@@ -56,6 +56,7 @@
 										<form action="{{ route('categories.update', $category->id) }}" method="POST">
 											{{ csrf_field() }}
 											{{ method_field('PUT') }}
+											<input type="hidden" name="category_type" value="post" />
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group{{ $errors->has('category_name') ? ' has-error' : '' }}">

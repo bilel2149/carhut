@@ -11,6 +11,9 @@
 |
 */
 
+// CORS
+header('Access-Control-Allow-Origin: http://localhost:8000');
+header('Access-Control-Allow-Credentials: true');
 
 Auth::routes();
 
@@ -23,6 +26,11 @@ Route::get('category/{id}', 'CategoriesController@getSingle')->name('category');
 Route::get('search/{s?}', 'SearchesController@getIndex')->where('s', '[\w\d]+');
 Route::get('services', 'ServicesController@getIndex')->name('services.front');
 Route::get('service/{slug}', 'ServicesController@getSingle')->name('service.single');
+Route::get('shop', 'ProductsController@getIndex')->name('shop');
+Route::get('shop/{slug}', 'ProductsController@getSingle');
+Route::get('shopsearch/{s?}', 'SearchesController@searchProducts')->where('s', '[\w\d]+');
+Route::get('shopcategory/{category_id}', 'ProductsController@getCategory');
+Route::get('shopfilter', 'ProductsController@getFilter');
 
 Route::get('/contact', 'ContactController@show')->name('contact');
 Route::post('/contact',  'ContactController@mailToAdmin');
@@ -30,8 +38,23 @@ Route::get('/profile', 'usersController@getProfile')->name('profile');
 Route::put('/profile/update', 'usersController@updateProfile')->name('profile.update');
 
 //API
-Route::group(array('prefix' => 'api'), function() {
-    Route::resource('services','API\ServicesController');
+Route::group(['prefix' => 'api'], function() {
+    Route::post('login', 'API\UserController@login');
+    Route::post('register', 'API\UserController@register');
+    Route::get('/user', 'API\UserController@getUser');
+
+    Route::resource('services','API\ServicesController', ['only' => [
+       'index', 'show'
+    ]]);
+    Route::resource('posts','API\PostsController', ['only' => [
+       'index', 'show'
+    ]]);
+    Route::get('post/{slug}', 'API\PostsController@getSingle');
+    Route::post('auth', 'API\UserController@checkAuth');
+});
+
+Route::group(['middleware' => 'auth:api', 'prefix' => 'api'], function(){
+	Route::post('details', 'API\UserController@details');
 });
 
 //Login Admin
@@ -61,4 +84,6 @@ Route::group(['middleware' => ['auth:admin']], function () {
   Route::resource('/admin/sliders', 'SliderController');
   Route::resource('/admin/users', 'UsersController');
   Route::resource('/admin/admins', 'AdminController');
+  Route::resource('/admin/products', 'ProductsController');
+  Route::resource('/admin/categoriesshop', 'CategoriesShopController');
 });

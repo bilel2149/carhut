@@ -18,7 +18,7 @@ class ServicesController extends Controller
      */
     public function index(Request $request)
     {
-        $services = Service::paginate(10);
+        $services = Service::get();
         return response(array(
                 'error' => false,
                 'services' =>$services->toArray(),

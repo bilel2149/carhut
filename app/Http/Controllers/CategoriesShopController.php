@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Category;
-use App\Post;
+use App\Product;
 use Session;
 
-class CategoriesController extends Controller
+class CategoriesShopController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,19 +19,19 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::where('category_type', 'post')->paginate( 10 );
+        $categories = Category::where('category_type', 'shop')->paginate( 10 );
 
-        return view('backend.categories.index', ['categories' => $categories]);
+        return view('backend.categoriesshop.index', ['categories' => $categories]);
     }
 
-    public function getSingle( $id ) {
+    /*public function getSingle( $id ) {
       $posts = Post::where('post_type', 'post')
           ->where('category_ID', '=', $id)
           ->orderBy('created_at', 'desc')
           ->paginate( 6 );
 
       return view('front.articles.index', ['posts' => $posts]);
-    }
+    }*/
 
     /**
      * Show the form for creating a new resource.
@@ -40,7 +40,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('backend.categories.create');
+        return view('backend.categoriesshop.create');
     }
 
     /**
@@ -66,7 +66,7 @@ class CategoriesController extends Controller
 
         Session::flash('success', 'Category added.');
 
-        return redirect()->route('categories.index');
+        return redirect()->route('categoriesshop.index');
     }
 
     /**
@@ -79,7 +79,7 @@ class CategoriesController extends Controller
     {
         $category = Category::findOrFail( $id );
 
-        return view('backend.categories.show', ['category' => $category]);
+        return view('backend.categoriesshop.show', ['category' => $category]);
     }
 
     /**
@@ -92,7 +92,7 @@ class CategoriesController extends Controller
     {
         $category = Category::findOrFail( $id );
 
-        return view('backend.categories.edit', ['category' => $category]);
+        return view('backend.categoriesshop.edit', ['category' => $category]);
     }
 
     /**
@@ -121,7 +121,7 @@ class CategoriesController extends Controller
 
         Session::flash('success', 'Category updated.');
 
-        return redirect()->route('categories.index');
+        return redirect()->route('categoriesshop.index');
     }
 
     /**
@@ -138,6 +138,6 @@ class CategoriesController extends Controller
 
         Session::flash('success', 'Category deleted.');
 
-        return redirect()->route('categories.index');
+        return redirect()->route('categoriesshop.index');
     }
 }

@@ -6873,3 +6873,32 @@ ul,li{
 	display:block;
 	width:100%;
 }
+
+.pagination>li>a, .pagination>li>span{
+		position: relative;
+    display: block;
+    line-height: 20px;
+    padding: 10px 5px;
+    font-size: 14px;
+    text-transform: capitalize;
+    min-width: 42px;
+    border: 1px solid #e0e0e0;
+    background: none;
+    color: #111111;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 2px;
+    transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+		color: #199CDB;
+		border-color: #199CDB;
+		background: #fff;
+}
+.styled-pagination li a:hover, .styled-pagination li a.active{
+	background: #fff;
+}

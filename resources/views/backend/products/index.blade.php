@@ -11,10 +11,10 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="fa fa-home"></i>
-								<a href="#">Home</a>
+								<a href="#">Accueil</a>
 							</li>
 							<li>
-								<a href="#">Articles</a>
+								<a href="#">Boutique</a>
 							</li>
 						</ul>
 					</div>
@@ -24,10 +24,10 @@
 						<div id="sortable-panel" class="">
 
 							<div id="titr-content" class="col-md-12">
-								<h2>Tous les articles</h2>
+								<h2>Tous les produits</h2>
 								<h5>common form elements and layouts ...</h5>
 								<div class="actions">
-									<a href="{{ route('posts.create') }}" class="btn btn-success ">Ajouter un nouveau</a>
+									<a href="{{ route('products.create') }}" class="btn btn-success ">Ajouter un nouveau</a>
 								</div>
 							</div>
 							<div class="col-md-12">
@@ -61,8 +61,8 @@
 																<th>Image</th>
 																<th>Slug</th>
 										            <th>Titre</th>
-										            <th>Contenu</th>
-										            <th>Type</th>
+										            <th>Detail</th>
+										            <th>Prix</th>
 																<th>Categorie</th>
 																<th>Date création</th>
 																<th>Date mise à jour</th>
@@ -73,36 +73,36 @@
 										    <tbody>
 
 
-															@foreach( $posts as $post )
+															@foreach( $products as $product )
 																<tr>
-																	<td>{{ $post->id }}</td>
-											            <td><img src="{{asset('/uploads/')}}/{{ $post->post_thumbnail }}" alt="{{ $post->post_title }}" style="width:100px;"/></td>
-											            <td>{{ $post->post_slug }}</td>
-											            <td>{{ $post->post_title }}</td>
+																	<td>{{ $product->id }}</td>
+											            <td><img src="{{asset('/uploads/products/')}}/{{ $product->product_thumbnail }}" alt="{{ $product->name }}" style="width:100px;"/></td>
+											            <td>{{ $product->slug }}</td>
+											            <td>{{ $product->name }}</td>
 											            <td>
-																		@if ( strlen( $post->post_content ) > 60 )
-																			{{ substr( $post->post_content, 0, 60 ) }} ...
+																		@if ( strlen( $product->details ) > 60 )
+																			{{ substr( $product->details, 0, 60 ) }} ...
 																		@else
-																			{{ $post->post_content }}
+																			{{ $product->details }}
 																		@endif
 																	</td>
-											            <td>{{ $post->post_type }}</td>
+											            <td>{{ $product->price }}</td>
 																	<td>
-																		<?php $category = Helper::get_category($post->category_ID); ?>
+																		<?php $category = Helper::get_category($product->category_ID); ?>
 																		{{ $category->category_name }}
 																	</td>
-																	<td>{{ date( 'j/m/Y', strtotime( $post->created_at ) ) }}</td>
-																	<td>{{ date( 'j/m/Y', strtotime( $post->updated_at ) ) }}</td>
+																	<td>{{ date( 'j/m/Y', strtotime( $product->created_at ) ) }}</td>
+																	<td>{{ date( 'j/m/Y', strtotime( $product->updated_at ) ) }}</td>
 																	<td class="center">
                                       <div class="">
                                         <ul class="list-inline">
                                           <li>
-                                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
                                           </li>
                                           <li>
                                             {!! Form::open([
       															            'method' => 'DELETE',
-      															            'route' => ['posts.destroy', $post->id]
+      															            'route' => ['products.destroy', $product->id]
       															        ]) !!}
                                                 {{ Form::button('<i class="fa fa-times fa fa-white"></i>', ['type' => 'submit', 'class' => 'btn btn-xs btn-bricky tooltips'] )  }}
       															        {!! Form::close() !!}

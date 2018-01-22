@@ -281,6 +281,55 @@
                 </ul>
               </li>
 
+              <li class="">
+                <a href="#" class="dropdown-toggle">
+                  <i class="menu-icon fa fa-shopping-bag"></i>
+                  <span class="menu-text"> Boutique </span>
+
+                  <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                <ul class="submenu nav-show"  >
+                  <li class="">
+                    <a href="{{ route('products.index') }}" >
+                      <i class="menu-icon fa fa-caret-right"></i>
+                      <span class="menu-text">Tous les produits</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+
+                  <li >
+                    <a href="{{ route('products.create') }}">
+                      <i class="menu-icon fa fa-caret-right"></i>
+                      <span class="menu-text">Ajouter un produit</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+
+                  <li >
+                    <a href="{{ route('categoriesshop.index') }}">
+                      <i class="menu-icon fa fa-caret-right"></i>
+                      <span class="menu-text">Tous les catégories</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+
+                  <li >
+                    <a href="{{ route('categoriesshop.create') }}">
+                      <i class="menu-icon fa fa-caret-right"></i>
+                      <span class="menu-text">Ajouter une catégorie</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                  </li>
+
+                </ul>
+              </li>
+
            </ul>
 
 
